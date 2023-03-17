@@ -6,7 +6,7 @@ import AdaptiveText from "../adaptive/AdaptiveText";
 const TabBars = ({ state, descriptors, navigation }) => {
   const adaptiveColor = global.scheme === "light" ? "#C0C0C0" : "#000";
   return (
-    <AdaptiveView classNames="flex-row">
+    <AdaptiveView classNames="flex-row bg-darkPalette-4">
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
