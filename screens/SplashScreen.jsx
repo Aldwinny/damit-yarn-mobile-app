@@ -5,11 +5,6 @@ import AdaptiveView from "../components/adaptive/AdaptiveView";
 import logo from "../assets/logo/DamitYarn.png";
 
 const SplashScreen = ({ navigation }) => {
-  const colorScheme = useColorScheme();
-
-  // TODO: research a better way to declare configurations. Maybe use custom hooks?
-  global.scheme = "light";
-
   useEffect(() => {
     setTimeout(() => {
       navigation.replace("getting-started");
