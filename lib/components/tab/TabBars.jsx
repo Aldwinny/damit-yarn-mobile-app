@@ -1,12 +1,24 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import AdaptiveView from "../adaptive/AdaptiveView";
-import AdaptiveText from "../adaptive/AdaptiveText";
+
+import useGlobalScheme from "../../hooks/UseGlobalScheme";
 
 const TabBars = ({ state, descriptors, navigation }) => {
-  const adaptiveColor = global.scheme === "light" ? "#C0C0C0" : "#000";
+  const [globalScheme] = useGlobalScheme();
+
+  const adaptiveColor = globalScheme === "dark" ? "#C0C0C0" : "#fff";
+  const adaptiveActiveColor = globalScheme === "dark" ? "#E5855B" : "#fff";
+  const adaptiveActiveClassName =
+    globalScheme === "dark" ? "text-palette-orange2" : "text-white font-bold";
+  const adaptiveClassName =
+    globalScheme === "dark" ? "text-darkPalette-2" : "text-white";
+
   return (
-    <AdaptiveView classNames="flex-row bg-darkPalette-4">
+    <View
+      className={`flex-row ${
+        globalScheme === "dark" ? "bg-darkPalette-4" : "bg-palette-orange2"
+      }`}
+    >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -21,7 +33,7 @@ const TabBars = ({ state, descriptors, navigation }) => {
         const Icon =
           options.tabBarIcon !== undefined
             ? options.tabBarIcon({
-                color: isFocused ? "#E5855B" : adaptiveColor,
+                color: isFocused ? adaptiveActiveColor : adaptiveColor,
                 style: { textAlign: "center", marginVertical: 3 },
               })
             : "";
@@ -56,17 +68,17 @@ const TabBars = ({ state, descriptors, navigation }) => {
             key={route.key}
           >
             {Icon}
-            <AdaptiveText
-              classNames={`${
-                isFocused ? "text-palette-orange2" : "text-darkPalette-2"
+            <Text
+              className={`${
+                isFocused ? adaptiveActiveClassName : adaptiveClassName
               } text-center`}
             >
               {label}
-            </AdaptiveText>
+            </Text>
           </TouchableOpacity>
         );
       })}
-    </AdaptiveView>
+    </View>
   );
 };
 

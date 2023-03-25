@@ -12,15 +12,12 @@ import NotificationScreen from "./lib/screens/TabScreens/NotificationScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  global.scheme = "dark"; //
-  const colorScheme = useGlobalScheme();
-
-  console.log(colorScheme);
-
-  // TODO: research a better way to declare configurations. Maybe use custom hooks?
   global.debug = true;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
-  global.scheme = "light"; //
+  global.scheme = "light";
+
+  const [colorScheme] = useGlobalScheme();
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>

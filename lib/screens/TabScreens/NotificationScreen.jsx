@@ -1,40 +1,49 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
-import AdaptiveView from "../../components/adaptive/AdaptiveView";
-import AdaptiveText from "../../components/adaptive/AdaptiveText";
-
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AdaptiveClickable from "../../components/adaptive/AdaptiveClickableIcons";
 import NotificationCard from "../../components/models/NotificationCard";
+import useGlobalScheme from "../../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../../shared/Adaptive";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const NotificationScreen = ({ navigation }) => {
-  const adaptiveIconColor = global.scheme === "light" ? "#E5855B" : "#000";
+  const [globalScheme] = useGlobalScheme();
+  const adaptive = AdaptiveScheme(globalScheme);
+  const backColor = adaptive.from("#E5855B", "#000");
 
   return (
     <>
-      <AdaptiveView classNames="bg-darkPalette-4 h-24 pt-12 w-full flex flex-row flex-wrap items-center">
-        <AdaptiveClickable
+      <View
+        className={`${adaptive.nativeWindNavbar} h-24 pt-12 w-full flex flex-row flex-wrap items-center`}
+      >
+        <TouchableOpacity
           onPress={() => {
             navigation.goBack();
           }}
-          classNames="flex flex-row align-center"
+          className={`${adaptive.nativeWindText} flex flex-row align-center`}
         >
           <MaterialIcons
             name="arrow-back-ios"
             style={{ marginLeft: 25 }}
             size={25}
-            color={adaptiveIconColor}
+            color={backColor}
           />
-          <AdaptiveText classNames="text-xl text-palette-orange2 font-bold">
+          <Text
+            className={`${adaptive.nativeWindText} text-xl text-palette-orange2 font-bold`}
+          >
             Back
-          </AdaptiveText>
-        </AdaptiveClickable>
-        <AdaptiveText classNames="font-bold text-xl mx-auto absolute bottom-5 left-0 right-0 text-center -z-10">
+          </Text>
+        </TouchableOpacity>
+        <Text
+          className={`${adaptive.nativeWindText} font-bold text-xl mx-auto absolute bottom-5 left-0 right-0 text-center -z-10`}
+        >
           Notifications
-        </AdaptiveText>
-      </AdaptiveView>
-      <AdaptiveView classNames="flex-1 items-center flex-column">
+        </Text>
+      </View>
+      <View
+        className={`${adaptive.nativeWindBackground} flex-1 items-center flex-column`}
+      >
         <NotificationCard
           hint="promotional"
           title="From CapicheAdverts"
@@ -75,7 +84,7 @@ const NotificationScreen = ({ navigation }) => {
           title="Servers will be down for maintenance."
           description="You may not be able to access Damit Yarn! servers from 8:00 AM - 10:00 AM PHT."
         />
-      </AdaptiveView>
+      </View>
     </>
   );
 };

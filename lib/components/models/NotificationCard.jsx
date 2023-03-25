@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Notification } from "../../services/models/notification";
 import React from "react";
-import AdaptiveText from "../adaptive/AdaptiveText";
-import AdaptiveView from "../adaptive/AdaptiveView";
+import useGlobalScheme from "../../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../../shared/Adaptive";
 
 const NotificationCard = ({
   hint,
@@ -13,6 +13,9 @@ const NotificationCard = ({
   isNew,
   color,
 }) => {
+  const [globalScheme] = useGlobalScheme();
+  const adaptive = AdaptiveScheme(globalScheme);
+
   const notif =
     notification ??
     new Notification({
@@ -23,32 +26,32 @@ const NotificationCard = ({
       isNew: isNew,
       color: color,
     });
+
   return (
     <TouchableOpacity>
-      <AdaptiveView classNames="bg-darkPalette-4 rounded-lg w-11/12 px-3 h-24 flex flex-row justify-center items-center mt-3">
+      <View
+        className={`${adaptive.nativeWindNavbar} rounded-lg w-11/12 px-3 h-24 flex flex-row justify-center items-center mt-3`}
+      >
         {notif.icon}
-        <AdaptiveView
-          classNames="flex-1 flex-column"
-          classNameDark="bg-darkPalette-4"
-        >
-          <AdaptiveText
-            classNames="font-bold text-lg"
+        <View className={`flex-1 flex-column`}>
+          <Text
+            className={`${adaptive.nativeWindText} font-bold text-lg`}
             style={{ color: notif.color }}
             numberOfLines={1}
             ellipsisMode="tail"
           >
             {notif.title}
-          </AdaptiveText>
-          <AdaptiveText
-            classNames="text-base text-ellipsis"
+          </Text>
+          <Text
+            className={`${adaptive.nativeWindText} text-base text-ellipsis`}
             numberOfLines={2}
             ellipsisMode="tail"
             classNameDark="text-darkPalette-2"
           >
             {notif.description}
-          </AdaptiveText>
-        </AdaptiveView>
-      </AdaptiveView>
+          </Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 };

@@ -1,12 +1,20 @@
 import React from "react";
-import AdaptiveView from "../../components/adaptive/AdaptiveView";
-import AdaptiveText from "../../components/adaptive/AdaptiveText";
+import { Text, View } from "react-native";
+import useGlobalScheme from "../../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../../shared/Adaptive";
 
 const FollowingOverlay = () => {
+  const [globalScheme] = useGlobalScheme();
+  const adaptive = AdaptiveScheme(globalScheme);
+
   return (
-    <AdaptiveView classNames="flex-1 justify-center items-center">
-      <AdaptiveText>Overlay reserved for Followed Accounts</AdaptiveText>
-    </AdaptiveView>
+    <View
+      className={`${adaptive.nativeWindBackground} flex-1 justify-center items-center`}
+    >
+      <Text className={`${adaptive.nativeWindText}`}>
+        Overlay reserved for Followed Accounts
+      </Text>
+    </View>
   );
 };
 

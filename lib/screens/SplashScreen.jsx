@@ -1,8 +1,9 @@
 import { View, Text, Image } from "react-native";
 import React, { useEffect } from "react";
-import AdaptiveView from "../components/adaptive/AdaptiveView";
 
 import logo from "../../assets/logo/DamitYarn.png";
+import useGlobalScheme from "../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../shared/Adaptive";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -11,10 +12,15 @@ const SplashScreen = ({ navigation }) => {
     }, 2000);
   });
 
+  const [globalScheme] = useGlobalScheme();
+  const adaptive = AdaptiveScheme(globalScheme);
+
   return (
-    <AdaptiveView classNames="flex-1 items-center justify-center">
+    <View
+      className={`${adaptive.nativeWindBackground} flex-1 items-center justify-center`}
+    >
       <Image className="w-48 h-48" source={logo} />
-    </AdaptiveView>
+    </View>
   );
 };
 

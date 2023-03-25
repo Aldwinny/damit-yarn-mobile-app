@@ -1,24 +1,23 @@
 import { useState } from "react";
 import { useColorScheme } from "react-native";
 
-const useGlobalScheme = (darkModeScheme, lightModeScheme) => {
-  const userColorScheme = useColorScheme();
+const useGlobalScheme = () => {
+  let userColorScheme = useColorScheme();
+
+  if (global.scheme != undefined && userColorScheme != global.scheme) {
+    userColorScheme = global.scheme;
+  }
 
   const [colorScheme, setColorScheme] = useState(userColorScheme);
 
-  if (global.scheme != undefined && colorScheme != global.scheme) {
-    setColorScheme(global.scheme);
-  } else {
-    if (colorScheme == null) {
-      setColorScheme("light");
-    }
-    global.scheme = colorScheme;
-  }
+  const setGlobalScheme = (newGlobalScheme) => {
+    global.scheme = newGlobalScheme;
+    console.log("char");
+    setColorScheme(newGlobalScheme);
+    console.log("rot");
+  };
 
-  if (colorScheme === "light") {
-    return lightModeScheme ?? colorScheme;
-  }
-  return darkModeScheme ?? colorScheme;
+  return [colorScheme, setGlobalScheme];
 };
 
 export default useGlobalScheme;
