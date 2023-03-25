@@ -1,8 +1,8 @@
-import { View, Text, useColorScheme, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import React, { useEffect } from "react";
 import AdaptiveView from "../components/adaptive/AdaptiveView";
 
-import logo from "../assets/logo/DamitYarn.png";
+import logo from "../../assets/logo/DamitYarn.png";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {

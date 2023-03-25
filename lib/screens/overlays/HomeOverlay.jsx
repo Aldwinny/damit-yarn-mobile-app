@@ -5,16 +5,17 @@ import AdaptiveClickable from "../../components/adaptive/AdaptiveClickableIcons"
 import { Text, View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import logo from "../../assets/logo/DamitYarnTextDark.png";
-import logo2 from "../../assets/logo/DamitYarnTextLight.png";
+import logo from "../../../assets/logo/DamitYarnTextDark.png";
+import logo2 from "../../../assets/logo/DamitYarnTextLight.png";
 
 const HomeOverlay = ({ navigation }) => {
   const adaptiveIconColor = global.scheme === "light" ? "#C0C0C0" : "#000";
 
   return (
     <AdaptiveView classNames="flex-1 items-center">
-      <AdaptiveView classNames="bg-darkPalette-4 h-24 pt-8 w-full flex flex-row flex-wrap items-center">
+      <AdaptiveView classNames="bg-darkPalette-4 h-24 w-full flex flex-row flex-wrap items-center">
         <Image
           className="h-16 w-36 ml-2"
           resizeMode="contain"

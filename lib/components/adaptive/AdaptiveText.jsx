@@ -6,12 +6,20 @@ const AdaptiveText = ({
   classNames = "",
   classNameDark = "text-white",
   classNameLight = "text-black",
+  style,
+  numberOfLines,
+  ellipsisMode,
 }) => {
   const adaptiveClassName =
     global.scheme === "light" ? classNameDark : classNameLight;
 
   return (
-    <Text className={`${adaptiveClassName} ${classNames ?? ""}`}>
+    <Text
+      style={style}
+      className={`${adaptiveClassName} ${classNames ?? ""}`}
+      numberOfLines={numberOfLines}
+      ellipsizeMode={ellipsisMode}
+    >
       {children}
     </Text>
   );

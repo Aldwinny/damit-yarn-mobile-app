@@ -5,7 +5,7 @@ import AdaptiveView from "../components/adaptive/AdaptiveView";
 import AdaptiveText from "../components/adaptive/AdaptiveText";
 
 import AntDesign from "react-native-vector-icons/AntDesign";
-import logo from "../assets/logo/DamitYarnTextDark.png";
+import logo from "../../assets/logo/DamitYarnTextDark.png";
 import { styled } from "nativewind";
 
 const StyledButton = styled(TouchableOpacity);

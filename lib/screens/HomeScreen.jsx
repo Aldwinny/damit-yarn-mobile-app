@@ -1,4 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import React from "react";
 import HomeOverlay from "./overlays/HomeOverlay";
 import TrendingOverlay from "./overlays/TrendingOverlay";
