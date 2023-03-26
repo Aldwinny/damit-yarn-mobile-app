@@ -7,7 +7,7 @@ const AdaptiveScheme = (globalScheme) => {
     iconColor: from("#C0C0C0", "#fff"),
     activeIconColor: from("#E5855B", "#fff"),
     nativeWindActiveNavText: from(
-      "text-palette-orange2 font-bold",
+      "text-palette-orange1 font-bold",
       "text-white font-bold"
     ),
     nativeWindButtonText: from("text-palette-orange2", "text-white"),

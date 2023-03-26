@@ -22,6 +22,11 @@ module.exports = {
         4: "#212121",
         5: "#141414",
       },
+      overlay: {
+        blackStrong: "rgba(0,0,0,0.6)",
+        blackMedium: "rgba(0,0,0,0.4)",
+        blackLight: "rgba(0,0,0,0.2)",
+      },
     },
     extend: {},
   },

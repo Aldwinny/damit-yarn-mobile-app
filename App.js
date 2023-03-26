@@ -8,6 +8,7 @@ import GettingStartedScreen from "./lib/screens/GettingStartedScreen";
 import HomeScreen from "./lib/screens/HomeScreen";
 import SplashScreen from "./lib/screens/SplashScreen";
 import NotificationScreen from "./lib/screens/TabScreens/NotificationScreen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,23 +20,27 @@ export default function App() {
   const [colorScheme] = useGlobalScheme();
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName={global.debug ? global.debugCurrentScreen : "splash"}
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="splash" component={SplashScreen} />
-          <Stack.Screen
-            name="getting-started"
-            component={GettingStartedScreen}
-          />
-          <Stack.Screen name="home" component={HomeScreen} />
-          <Stack.Screen name="notifications" component={NotificationScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <GestureHandlerRootView className="flex-1">
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName={
+              global.debug ? global.debugCurrentScreen : "splash"
+            }
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="splash" component={SplashScreen} />
+            <Stack.Screen
+              name="getting-started"
+              component={GettingStartedScreen}
+            />
+            <Stack.Screen name="home" component={HomeScreen} />
+            <Stack.Screen name="notifications" component={NotificationScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

@@ -1,11 +1,11 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import React from "react";
 
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import NotificationCard from "../../components/models/NotificationCard";
 import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Navbar from "../../components/Navbar";
 
 const NotificationScreen = ({ navigation }) => {
   const [globalScheme] = useGlobalScheme();
@@ -13,33 +13,7 @@ const NotificationScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} h-full`}>
-      <View
-        className={`${adaptive.nativeWindNavbar} py-5 flex flex-row flex-wrap items-center`}
-      >
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}
-          className={`${adaptive.nativeWindText} flex flex-row align-center`}
-        >
-          <MaterialIcons
-            name="arrow-back-ios"
-            style={{ marginLeft: 25 }}
-            size={25}
-            color={adaptive.activeIconColor}
-          />
-          <Text
-            className={`${adaptive.nativeWindButtonText} text-xl font-bold`}
-          >
-            Back
-          </Text>
-        </TouchableOpacity>
-        <Text
-          className={`${adaptive.nativeWindText} font-bold text-xl mx-auto absolute top-5 left-0 right-0 text-center -z-10`}
-        >
-          Notifications
-        </Text>
-      </View>
+      <Navbar action={() => navigation.goBack()} title="Notifications" />
       {/* Convert to Flatlist or SectionList */}
       <ScrollView
         className={`${adaptive.nativeWindBackground} flex-1`}
