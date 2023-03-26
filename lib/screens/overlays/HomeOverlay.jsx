@@ -21,7 +21,7 @@ const HomeOverlay = ({ navigation }) => {
         <Image
           className="h-16 w-36 ml-2"
           resizeMode="contain"
-          source={global.scheme ? logo : logo2}
+          source={globalScheme === "dark" ? logo : logo2}
         />
 
         <TouchableOpacity

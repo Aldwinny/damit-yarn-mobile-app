@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -10,12 +10,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const NotificationScreen = ({ navigation }) => {
   const [globalScheme] = useGlobalScheme();
   const adaptive = AdaptiveScheme(globalScheme);
-  const backColor = adaptive.from("#E5855B", "#000");
 
   return (
-    <>
+    <SafeAreaView className={`${adaptive.nativeWindNavbar} h-full`}>
       <View
-        className={`${adaptive.nativeWindNavbar} h-24 pt-12 w-full flex flex-row flex-wrap items-center`}
+        className={`${adaptive.nativeWindNavbar} py-5 flex flex-row flex-wrap items-center`}
       >
         <TouchableOpacity
           onPress={() => {
@@ -27,22 +26,29 @@ const NotificationScreen = ({ navigation }) => {
             name="arrow-back-ios"
             style={{ marginLeft: 25 }}
             size={25}
-            color={backColor}
+            color={adaptive.activeIconColor}
           />
           <Text
-            className={`${adaptive.nativeWindText} text-xl text-palette-orange2 font-bold`}
+            className={`${adaptive.nativeWindButtonText} text-xl font-bold`}
           >
             Back
           </Text>
         </TouchableOpacity>
         <Text
-          className={`${adaptive.nativeWindText} font-bold text-xl mx-auto absolute bottom-5 left-0 right-0 text-center -z-10`}
+          className={`${adaptive.nativeWindText} font-bold text-xl mx-auto absolute top-5 left-0 right-0 text-center -z-10`}
         >
           Notifications
         </Text>
       </View>
-      <View
-        className={`${adaptive.nativeWindBackground} flex-1 items-center flex-column`}
+      {/* Convert to Flatlist or SectionList */}
+      <ScrollView
+        className={`${adaptive.nativeWindBackground} flex-1`}
+        contentContainerStyle={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          paddingBottom: 15,
+        }}
       >
         <NotificationCard
           hint="promotional"
@@ -84,8 +90,18 @@ const NotificationScreen = ({ navigation }) => {
           title="Servers will be down for maintenance."
           description="You may not be able to access Damit Yarn! servers from 8:00 AM - 10:00 AM PHT."
         />
-      </View>
-    </>
+        <NotificationCard
+          hint="maintenance"
+          title="Servers will be down for maintenance."
+          description="You may not be able to access Damit Yarn! servers from 8:00 AM - 10:00 AM PHT."
+        />
+        <NotificationCard
+          hint="maintenance"
+          title="Servers will be down for maintenance."
+          description="End of scroll"
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

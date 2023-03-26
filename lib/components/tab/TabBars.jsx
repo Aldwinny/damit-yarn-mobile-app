@@ -2,16 +2,11 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 import useGlobalScheme from "../../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../../shared/Adaptive";
 
 const TabBars = ({ state, descriptors, navigation }) => {
   const [globalScheme] = useGlobalScheme();
-
-  const adaptiveColor = globalScheme === "dark" ? "#C0C0C0" : "#fff";
-  const adaptiveActiveColor = globalScheme === "dark" ? "#E5855B" : "#fff";
-  const adaptiveActiveClassName =
-    globalScheme === "dark" ? "text-palette-orange2" : "text-white font-bold";
-  const adaptiveClassName =
-    globalScheme === "dark" ? "text-darkPalette-2" : "text-white";
+  const adaptive = AdaptiveScheme(globalScheme);
 
   return (
     <View
@@ -33,7 +28,9 @@ const TabBars = ({ state, descriptors, navigation }) => {
         const Icon =
           options.tabBarIcon !== undefined
             ? options.tabBarIcon({
-                color: isFocused ? adaptiveActiveColor : adaptiveColor,
+                color: isFocused
+                  ? adaptive.activeIconColor
+                  : adaptive.iconColor,
                 style: { textAlign: "center", marginVertical: 3 },
               })
             : "";
@@ -70,7 +67,9 @@ const TabBars = ({ state, descriptors, navigation }) => {
             {Icon}
             <Text
               className={`${
-                isFocused ? adaptiveActiveClassName : adaptiveClassName
+                isFocused
+                  ? adaptive.nativeWindActiveNavText
+                  : adaptive.nativeWindNavText
               } text-center`}
             >
               {label}
