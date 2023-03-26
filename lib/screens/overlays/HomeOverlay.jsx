@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,6 +8,27 @@ import logo from "../../../assets/logo/DamitYarnTextDark.png";
 import logo2 from "../../../assets/logo/DamitYarnTextLight.png";
 import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
+import CarouselBuilder from "../../components/CarouselBuilder";
+
+import defaultFeaturedImage from "../../../assets/images/temp/bg-features.jpg";
+
+const featuredItems = [
+  {
+    image: defaultFeaturedImage,
+    title: "It's Autumn Clothing Month!",
+    description: "Check out our warm clothes to prepare you for winter!",
+  },
+  {
+    image: defaultFeaturedImage,
+    title: "It's another carousel item",
+    description: "I don't know what to put in here!",
+  },
+  {
+    image: defaultFeaturedImage,
+    title: "It's Autumn Clothing Month!",
+    description: "I also don't know what to put in here!",
+  },
+];
 
 const HomeOverlay = ({ navigation }) => {
   const [globalScheme] = useGlobalScheme();
@@ -38,7 +59,6 @@ const HomeOverlay = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log("Bell has been clicked!!!");
             navigation.navigate("notifications");
           }}
           className={`${adaptive.nativeWindText} mx-3`}
@@ -58,10 +78,12 @@ const HomeOverlay = ({ navigation }) => {
           <Ionicons name="search" color={adaptive.iconColor} size={25} />
         </TouchableOpacity>
       </View>
-      <View
-        className={`${adaptive.nativeWindBackground} h-full flex items-center`}
-      >
-        <Text className={`${adaptive.nativeWindText}`}>Tabbar</Text>
+      <CarouselBuilder items={featuredItems} />
+      <View className={`${adaptive.nativeWindBackground} h-full flex`}>
+        <View></View>
+        <Text className={`${adaptive.nativeWindText}`}>Trending</Text>
+        <Text className={`${adaptive.nativeWindText}`}>Following</Text>
+        <Text className={`${adaptive.nativeWindText}`}>More Products</Text>
       </View>
     </SafeAreaView>
   );
