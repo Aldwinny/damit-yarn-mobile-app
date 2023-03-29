@@ -6,6 +6,11 @@ const AdaptiveScheme = (globalScheme) => {
     from: (darkMode, lightMode) => from(darkMode, lightMode),
     iconColor: from("#C0C0C0", "#fff"),
     activeIconColor: from("#E5855B", "#fff"),
+    paletteColorYellow: "#EAD72C",
+    paletteColorPink: "#E82BAF",
+    paletteColorOrange: "#E8632B",
+    paletteColorLightOrange: "#E5855B",
+    paletteColorPeach: "#FFAD62",
     nativeWindActiveNavText: from(
       "text-palette-orange1 font-bold",
       "text-white font-bold"
