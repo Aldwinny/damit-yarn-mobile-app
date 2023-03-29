@@ -13,89 +13,105 @@ import Entypo from "react-native-vector-icons/Entypo";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome5";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { StatusBar } from "expo-status-bar";
+import useGlobalScheme from "../hooks/UseGlobalScheme";
+import AdaptiveScheme from "../shared/Adaptive";
 
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
+  const [globalScheme] = useGlobalScheme();
+  const adaptive = AdaptiveScheme(globalScheme);
+
   return (
-    <Tab.Navigator
-      initialRouteName="HomeOverlay"
-      screenOptions={{
-        headerShown: false,
-      }}
-      tabBar={(props) => <TabBars {...props} />}
-    >
-      <Tab.Screen
-        name="HomeOverlay"
-        component={HomeOverlay}
-        options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color, size, style }) => (
-            <Ionicons
-              name="home"
-              color={color}
-              size={size ?? 25}
-              style={style}
-            />
-          ),
+    <>
+      <Tab.Navigator
+        initialRouteName={
+          global.debug ? global.debugOverlayScreen : "HomeOverlay"
+        }
+        screenOptions={{
+          headerShown: false,
         }}
-      />
-      <Tab.Screen
-        name="TrendingOverlay"
-        component={TrendingOverlay}
-        options={{
-          tabBarLabel: "Trending",
-          tabBarIcon: ({ color, size, style }) => (
-            <Feather
-              name="trending-up"
-              color={color}
-              size={size ?? 25}
-              style={style}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="CartOverlay"
-        component={CartOverlay}
-        options={{
-          tabBarLabel: "Cart",
-          tabBarIcon: ({ color, size, style }) => (
-            <MaterialIcons
-              name="shopping-cart"
-              color={color}
-              size={size ?? 25}
-              style={style}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="FollowingOverlay"
-        component={FollowingOverlay}
-        options={{
-          tabBarLabel: "Following",
-          tabBarIcon: ({ color, size, style }) => (
-            <Entypo name="shop" color={color} size={size ?? 25} style={style} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="ProfileOverlay"
-        component={ProfileOverlay}
-        options={{
-          tabBarLabel: "Profile",
-          tabBarIcon: ({ color, size, style }) => (
-            <FontAwesomeIcon
-              name="user-circle"
-              color={color}
-              size={size ?? 25}
-              style={style}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+        tabBar={(props) => <TabBars {...props} />}
+      >
+        <Tab.Screen
+          name="HomeOverlay"
+          component={HomeOverlay}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color, size, style }) => (
+              <Ionicons
+                name="home"
+                color={color}
+                size={size ?? 25}
+                style={style}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="TrendingOverlay"
+          component={TrendingOverlay}
+          options={{
+            tabBarLabel: "Trending",
+            tabBarIcon: ({ color, size, style }) => (
+              <Feather
+                name="trending-up"
+                color={color}
+                size={size ?? 25}
+                style={style}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="CartOverlay"
+          component={CartOverlay}
+          options={{
+            tabBarLabel: "Cart",
+            tabBarIcon: ({ color, size, style }) => (
+              <MaterialIcons
+                name="shopping-cart"
+                color={color}
+                size={size ?? 25}
+                style={style}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="FollowingOverlay"
+          component={FollowingOverlay}
+          options={{
+            tabBarLabel: "Following",
+            tabBarIcon: ({ color, size, style }) => (
+              <Entypo
+                name="shop"
+                color={color}
+                size={size ?? 25}
+                style={style}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ProfileOverlay"
+          component={ProfileOverlay}
+          options={{
+            tabBarLabel: "Profile",
+            tabBarIcon: ({ color, size, style }) => (
+              <FontAwesomeIcon
+                name="user-circle"
+                color={color}
+                size={size ?? 25}
+                style={style}
+              />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+      <StatusBar style={adaptive.from("light", "dark")} />
+    </>
   );
 };
 

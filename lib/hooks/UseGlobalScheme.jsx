@@ -12,9 +12,7 @@ const useGlobalScheme = () => {
 
   const setGlobalScheme = (newGlobalScheme) => {
     global.scheme = newGlobalScheme;
-    console.log("char");
     setColorScheme(newGlobalScheme);
-    console.log("rot");
   };
 
   return [colorScheme, setGlobalScheme];

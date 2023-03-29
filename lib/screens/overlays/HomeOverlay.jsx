@@ -15,6 +15,7 @@ import defaultItemImage from "../../../assets/images/temp/bg-item.png";
 import NavLink from "../../components/NavLink";
 import ItemPhotoCard from "../../components/models/ItemPhotoCard";
 import ItemCard from "../../components/models/ItemCard";
+import { StatusBar } from "expo-status-bar";
 
 const featuredItems = [
   {
@@ -39,36 +40,60 @@ const trendingItems = [
     id: 1,
     image: defaultItemImage,
     stars: 5.0,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "The Crocheteers",
   },
   {
     id: 2,
     image: defaultItemImage,
     stars: 5.0,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "Clothes Society",
   },
   {
     id: 3,
     image: defaultItemImage,
     stars: 5.0,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "Wanna Wear Shirt Shop",
   },
   {
     id: 4,
     image: defaultItemImage,
     stars: 5,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "Puppeteers and Toys",
   },
   {
     id: 5,
     image: defaultItemImage,
     stars: 5,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "Idealists & Artisans",
   },
   {
     id: 6,
     image: defaultItemImage,
     stars: 5.0,
+    price: 450,
+    sold: 11250,
+    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    location: "Quezon City, Metro Manila",
     shopName: "The art of clotheswar",
   },
 ];
@@ -128,7 +153,9 @@ const HomeOverlay = ({ navigation }) => {
         <CarouselBuilder items={featuredItems} />
         <View className={`${adaptive.nativeWindNavbar} h-full flex-1`}>
           <NavLink
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("TrendingOverlay");
+            }}
             color={adaptive.paletteColorOrange}
             nativeWind="ml-3 mt-3"
           >
@@ -149,7 +176,9 @@ const HomeOverlay = ({ navigation }) => {
 
           <View className={`${adaptive.nativeWindBackground} flex-1 mt-3`}>
             <NavLink
-              onPress={() => {}}
+              onPress={() => {
+                navigation.navigate("FollowingOverlay");
+              }}
               color={adaptive.paletteColorPink}
               nativeWind="ml-3 mt-3"
             >
@@ -174,7 +203,7 @@ const HomeOverlay = ({ navigation }) => {
               More Products
             </NavLink>
             <View
-              className={`flex mt-2 my-3 w-full items-center justify-center bg-red-100`}
+              className={`flex mt-2 my-3 w-full items-center justify-center`}
             >
               {/* TODO: Edit the following to be an actual card */}
               {trendingItems.map((item) => {

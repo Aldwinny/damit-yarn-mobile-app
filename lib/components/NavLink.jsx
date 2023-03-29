@@ -4,7 +4,14 @@ import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const NavLink = ({ onPress, children, iconStyle, color, nativeWind }) => {
+const NavLink = ({
+  onPress,
+  children,
+  iconStyle,
+  color,
+  nativeWind,
+  textNativeWind,
+}) => {
   if (onPress !== undefined) {
     return (
       <TouchableOpacity
@@ -14,7 +21,9 @@ const NavLink = ({ onPress, children, iconStyle, color, nativeWind }) => {
         }`}
       >
         <Text
-          className="text-xl"
+          className={`text-xl ${
+            textNativeWind !== undefined ? textNativeWind : ""
+          }`}
           style={{
             color: color,
           }}
@@ -44,7 +53,9 @@ const NavLink = ({ onPress, children, iconStyle, color, nativeWind }) => {
         className={`${nativeWind !== undefined ? nativeWind : ""}`}
       >
         <Text
-          className="text-xl"
+          className={`text-xl ${
+            textNativeWind !== undefined ? textNativeWind : ""
+          }`}
           style={{
             color: color,
           }}
