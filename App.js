@@ -7,8 +7,12 @@ import useGlobalScheme from "./lib/hooks/UseGlobalScheme";
 import GettingStartedScreen from "./lib/screens/GettingStartedScreen";
 import HomeScreen from "./lib/screens/HomeScreen";
 import SplashScreen from "./lib/screens/SplashScreen";
-import NotificationScreen from "./lib/screens/TabScreens/NotificationScreen";
+import NotificationScreen from "./lib/screens/HomeScreens/NotificationScreen";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import AboutScreen from "./lib/screens/ProfileScreens/AboutScreen";
+import FAQScreen from "./lib/screens/ProfileScreens/FAQScreen";
+import SettingsScreen from "./lib/screens/ProfileScreens/SettingsScreen";
+import CategorizedViewerScreen from "./lib/screens/ProfileScreens/CategorizedViewerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +43,13 @@ export default function App() {
             />
             <Stack.Screen name="home" component={HomeScreen} />
             <Stack.Screen name="notifications" component={NotificationScreen} />
+            <Stack.Screen name="about" component={AboutScreen} />
+            <Stack.Screen name="faq" component={FAQScreen} />
+            <Stack.Screen name="settings" component={SettingsScreen} />
+            <Stack.Screen
+              name="categorized"
+              component={CategorizedViewerScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

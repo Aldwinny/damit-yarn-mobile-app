@@ -21,7 +21,7 @@ import IconBarButton from "../../components/IconBarButton";
 
 const user = new User({ firstname: "Alds" });
 
-const ProfileOverlay = () => {
+const ProfileOverlay = ({ navigation }) => {
   const [globalScheme, setGlobalScheme] = useGlobalScheme();
   const adaptive = AdaptiveScheme(globalScheme);
 
@@ -94,7 +94,11 @@ const ProfileOverlay = () => {
             />
           }
           nativeWind={`border-t mt-3`}
-          onPress={() => console.log("Hmmm")}
+          onPress={() =>
+            navigation.navigate("categorized", {
+              category: "history",
+            })
+          }
         >
           Purchase History
         </IconBarButton>
@@ -102,7 +106,11 @@ const ProfileOverlay = () => {
           icon={
             <Ionicons name="eye" size={25} color={adaptive.palettedIconColor} />
           }
-          onPress={() => console.log("Hmmm")}
+          onPress={() =>
+            navigation.navigate("categorized", {
+              category: "recent",
+            })
+          }
         >
           Recently Viewed
         </IconBarButton>
@@ -114,7 +122,11 @@ const ProfileOverlay = () => {
               color={adaptive.palettedIconColor}
             />
           }
-          onPress={() => console.log("Hmmm")}
+          onPress={() =>
+            navigation.navigate("categorized", {
+              category: "liked",
+            })
+          }
         >
           Liked
         </IconBarButton>
@@ -134,11 +146,11 @@ const ProfileOverlay = () => {
             />
           }
           nativeWind={"border-t mt-3"}
-          onPress={() => console.log("Hmmm")}
+          onPress={() => navigation.navigate("settings")}
         >
           Account Settings
         </IconBarButton>
-        <IconBarButton onPress={() => console.log("Hmmm")}>
+        <IconBarButton onPress={() => navigation.navigate("faq")}>
           Frequently Asked Questions
         </IconBarButton>
         <IconBarButton
@@ -149,7 +161,7 @@ const ProfileOverlay = () => {
               color={adaptive.palettedIconColor}
             />
           }
-          onPress={() => console.log("Hmmm")}
+          onPress={() => navigation.navigate("about")}
         >
           About the developer
         </IconBarButton>
