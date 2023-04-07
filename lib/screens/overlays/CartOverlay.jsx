@@ -15,6 +15,9 @@ const CartOverlay = () => {
     <View
       className={`${adaptive.nativeWindBackground} flex-1 justify-center items-center`}
     >
+      <Text className="text-lg text-red-400 text-center mx-5 mb-2">
+        Press the button everytime you wanna cry from all these programming.
+      </Text>
       <Button
         icon="account-cowboy-hat"
         mode="contained"
