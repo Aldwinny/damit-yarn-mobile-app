@@ -1,3 +1,9 @@
+/**
+ * The AdaptiveScheme class sllows the easy change of components' attributes based on the global scheme.
+ *
+ * @param {*} globalScheme can be "light" or "dark"
+ * @returns An object that provides access to an adaptive pallete for light mode and dark mode
+ */
 const AdaptiveScheme = (globalScheme) => {
   const from = (darkMode, lightMode) =>
     globalScheme === "dark" ? darkMode : lightMode;

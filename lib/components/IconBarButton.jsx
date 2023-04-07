@@ -2,12 +2,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 import AntDesign from "react-native-vector-icons/AntDesign";
-import useGlobalScheme from "../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const IconBarButton = ({ icon, onPress, children, nativeWind }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -20,11 +20,11 @@ const IconBarButton = ({ icon, onPress, children, nativeWind }) => {
           <AntDesign
             name="questioncircle"
             size={25}
-            color={adaptive.palettedIconColor}
+            color={adaptive.iconColor}
           />
         )}
         <Text
-          className={`${adaptive.nativeWindPalettedText} flex-1 ml-4 font-bold text-lg`}
+          className={`${adaptive.nativeWindNavText} flex-1 ml-4 font-bold text-lg`}
         >
           {children ?? "No Label"}
         </Text>

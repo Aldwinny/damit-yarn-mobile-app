@@ -2,8 +2,8 @@ import { View, Text, Image } from "react-native";
 import React, { useEffect } from "react";
 
 import logo from "../../assets/logo/DamitYarn.png";
-import useGlobalScheme from "../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -12,8 +12,8 @@ const SplashScreen = ({ navigation }) => {
     }, 2000);
   });
 
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <View

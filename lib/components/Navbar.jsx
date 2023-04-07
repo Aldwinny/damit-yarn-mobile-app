@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 import React from "react";
-import useGlobalScheme from "../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const Navbar = ({
   action,
@@ -14,8 +14,8 @@ const Navbar = ({
   title,
   children,
 }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   const navBarIcon = icon ?? (
     <MaterialIcons

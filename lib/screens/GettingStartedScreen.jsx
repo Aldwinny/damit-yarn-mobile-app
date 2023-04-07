@@ -5,13 +5,13 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import logo from "../../assets/logo/DamitYarnTextDark.png";
 import { styled } from "nativewind";
 import AdaptiveScheme from "../shared/Adaptive";
-import useGlobalScheme from "../hooks/UseGlobalScheme";
+import { useSelector } from "react-redux";
 
 const StyledButton = styled(TouchableOpacity);
 
 const GettingStartedScreen = ({ navigation }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <View className={`${adaptive.nativeWindBackground} flex-1 items-center`}>

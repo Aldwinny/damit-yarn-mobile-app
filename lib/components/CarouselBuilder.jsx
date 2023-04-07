@@ -2,7 +2,6 @@ import { View, Text, Dimensions, ImageBackground } from "react-native";
 import React, { useState } from "react";
 import Carousel from "react-native-reanimated-carousel";
 
-import useGlobalScheme from "../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../shared/Adaptive";
 import Animated, {
   Extrapolate,
@@ -10,12 +9,13 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
+import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 
 const CarouselBuilder = ({ items }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   const [isVertical, setIsVertical] = useState(false);
 

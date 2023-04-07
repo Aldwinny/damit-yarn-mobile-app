@@ -2,11 +2,11 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../../components/Navbar";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import ItemCard from "../../components/models/ItemCard";
 
 import defaultItemImage from "../../../assets/images/temp/bg-item.png";
+import { useSelector } from "react-redux";
 
 const trendingItems = [
   {
@@ -72,8 +72,8 @@ const trendingItems = [
 ];
 
 const TrendingOverlay = () => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>

@@ -1,17 +1,17 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const TabBars = ({ state, descriptors, navigation }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <View
       className={`flex-row ${
-        globalScheme === "dark" ? "bg-darkPalette-4" : "bg-palette-orange2"
+        theme.theme === "dark" ? "bg-darkPalette-4" : "bg-palette-orange2"
       }`}
     >
       {state.routes.map((route, index) => {

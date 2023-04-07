@@ -2,14 +2,14 @@ import { ScrollView } from "react-native";
 import React from "react";
 
 import NotificationCard from "../../components/models/NotificationCard";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../../components/Navbar";
+import { useSelector } from "react-redux";
 
 const NotificationScreen = ({ navigation }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} h-full`}>

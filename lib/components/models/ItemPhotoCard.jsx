@@ -1,16 +1,16 @@
 import { View, Text, Dimensions, Image } from "react-native";
 import React from "react";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 
 const ItemPhotoCard = ({ image, stars, shopName, onPress }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <TouchableOpacity onPress={onPress}>

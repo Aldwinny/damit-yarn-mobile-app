@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -6,7 +6,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import logo from "../../../assets/logo/DamitYarnTextDark.png";
 import logo2 from "../../../assets/logo/DamitYarnTextLight.png";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import CarouselBuilder from "../../components/CarouselBuilder";
 
@@ -15,7 +14,7 @@ import defaultItemImage from "../../../assets/images/temp/bg-item.png";
 import NavLink from "../../components/NavLink";
 import ItemPhotoCard from "../../components/models/ItemPhotoCard";
 import ItemCard from "../../components/models/ItemCard";
-import { StatusBar } from "expo-status-bar";
+import { useSelector } from "react-redux";
 
 const featuredItems = [
   {
@@ -99,52 +98,66 @@ const trendingItems = [
 ];
 
 const HomeOverlay = ({ navigation }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
+
+  const [isSearching, setIsSearching] = useState(false);
 
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar}`}>
       <View
-        className={`${adaptive.nativeWindNavbar} flex flex-row flex-nowrap items-center py-2`}
+        className={`${adaptive.nativeWindNavbar} flex flex-row flex-nowrap items-center py-2 h-20`}
       >
-        <Image
-          className="h-16 w-36 ml-2"
-          resizeMode="contain"
-          source={globalScheme === "dark" ? logo : logo2}
-        />
-
-        <TouchableOpacity
-          onPress={() => {
-            console.log("Message has been clicked!!!");
-          }}
-          className={`${adaptive.nativeWindText} ml-auto`}
-        >
-          <Ionicons
-            name="ios-chatbox-ellipses"
-            color={adaptive.iconColor}
-            size={25}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("notifications");
-          }}
-          className={`${adaptive.nativeWindText} mx-3`}
-        >
-          <MaterialCommunityIcons
-            name="bell"
-            color={adaptive.iconColor}
-            size={25}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            console.log("Search has been clicked!!!");
-          }}
-          className={`${adaptive.nativeWindText} mr-3`}
-        >
-          <Ionicons name="search" color={adaptive.iconColor} size={25} />
-        </TouchableOpacity>
+        {isSearching ? (
+          <TouchableOpacity
+            onPress={() => {
+              setIsSearching(false);
+            }}
+            className={`${adaptive.nativeWindText} mr-3`}
+          >
+            <Ionicons name="search" color={adaptive.iconColor} size={25} />
+          </TouchableOpacity>
+        ) : (
+          <>
+            <Image
+              className="h-16 w-36 ml-2"
+              resizeMode="contain"
+              source={theme.theme === "dark" ? logo : logo2}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("chatlist");
+              }}
+              className={`${adaptive.nativeWindText} ml-auto`}
+            >
+              <Ionicons
+                name="ios-chatbox-ellipses"
+                color={adaptive.iconColor}
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("notifications");
+              }}
+              className={`${adaptive.nativeWindText} mx-3`}
+            >
+              <MaterialCommunityIcons
+                name="bell"
+                color={adaptive.iconColor}
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setIsSearching(true);
+              }}
+              className={`${adaptive.nativeWindText} mr-3`}
+            >
+              <Ionicons name="search" color={adaptive.iconColor} size={25} />
+            </TouchableOpacity>
+          </>
+        )}
       </View>
       <ScrollView
         className={`${adaptive.nativeWindBackground} h-full`}

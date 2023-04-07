@@ -1,6 +1,5 @@
 import { View, Text, Dimensions, Image } from "react-native";
 import React from "react";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -8,6 +7,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { numberCompactor } from "../../utils/formatter";
+import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 
@@ -18,8 +18,8 @@ const ItemCard = ({
   textColor = "#E5855B",
   iconColor = "#EAD72C",
 }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -40,9 +40,13 @@ const ItemCard = ({
           }}
           source={item.image}
         />
-        <View className="flex flex-col ml-2">
-          <Text className={`${adaptive.nativeWindText} font-bold mb-1`}>
-            {item.shopName}
+        <View className="flex-1 flex-col ml-2 w-full">
+          <Text
+            className={`${adaptive.nativeWindText} font-bold mb-1`}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {item.name}
           </Text>
           <Text
             className={`text-base font-bold mb-auto`}

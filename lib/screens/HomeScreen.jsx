@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import React from "react";
+import React, { useEffect } from "react";
 import HomeOverlay from "./overlays/HomeOverlay";
 import TrendingOverlay from "./overlays/TrendingOverlay";
 import CartOverlay from "./overlays/CartOverlay";
@@ -14,14 +14,14 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome5";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { StatusBar } from "expo-status-bar";
-import useGlobalScheme from "../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   return (
     <>

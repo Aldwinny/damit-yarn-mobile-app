@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Notification } from "../../services/models/notification";
 import React from "react";
-import useGlobalScheme from "../../hooks/UseGlobalScheme";
 import AdaptiveScheme from "../../shared/Adaptive";
+import { useSelector } from "react-redux";
 
 const NotificationCard = ({
   hint,
@@ -13,8 +13,8 @@ const NotificationCard = ({
   isNew,
   color,
 }) => {
-  const [globalScheme] = useGlobalScheme();
-  const adaptive = AdaptiveScheme(globalScheme);
+  const theme = useSelector((state) => state.theme);
+  const adaptive = AdaptiveScheme(theme.theme);
 
   const notif =
     notification ??
