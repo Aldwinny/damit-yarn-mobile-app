@@ -72,14 +72,14 @@ const LoginScreen = ({ navigation }) => {
           </TouchableRipple>
 
           <Text className={`${adaptive.nativeWindText} text-base mt-2 ml-3`}>
-            I want to{" "}
+            If you want to sign up,{" "}
             <Text
               className={`${adaptive.nativeWindButtonText}`}
               onPress={() => {
                 navigation.replace("register");
               }}
             >
-              sign up!
+              Click here!
             </Text>
           </Text>
         </View>
