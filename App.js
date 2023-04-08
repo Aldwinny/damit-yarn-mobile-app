@@ -19,6 +19,8 @@ import { store } from "./lib/shared/redux/store";
 import LoginScreen from "./lib/screens/ProfileScreens/LoginScreen";
 import RegisterScreen from "./lib/screens/ProfileScreens/RegisterScreen";
 import ItemScreen from "./lib/screens/ItemScreen";
+import ReviewsScreen from "./lib/screens/ReviewsScreen";
+import ShopScreen from "./lib/screens/ShopScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +66,8 @@ export default function App() {
                 <Stack.Screen name="chatlist" component={ChatListScreen} />
                 <Stack.Screen name="chat" component={ChatScreen} />
                 <Stack.Screen name="item" component={ItemScreen} />
+                <Stack.Screen name="reviews" component={ReviewsScreen} />
+                <Stack.Screen name="shop" component={ShopScreen} />
               </Stack.Navigator>
             </NavigationContainer>
           </SafeAreaProvider>
