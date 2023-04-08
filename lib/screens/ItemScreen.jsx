@@ -6,6 +6,7 @@ import CarouselItemBuilder from "../components/CarouselItemBuilder";
 
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import defaultFeaturedImage from "../../assets/images/temp/bg-features.jpg";
 import defaultAvatarImage from "../../assets/images/temp/bg-avatar-circle.jpg";
@@ -237,6 +238,66 @@ const ItemScreen = ({ route, navigation }) => {
           </>
         )}
       </ScrollView>
+      <View className={`flex flex-row items-center`}>
+        <TouchableRipple
+          onPress={() => {
+            item.heart === true;
+          }}
+          className="px-4 py-2 m-2 rounded-full"
+          rippleColor={
+            theme.theme === "dark" ? "#C0C0C080" : "rgba(0, 0, 0, .32)"
+          }
+          borderless={true}
+        >
+          <FontAwesome
+            name={item.heart ? "heart" : "heart-o"}
+            size={20}
+            color={adaptive.paletteColorYellow}
+          />
+        </TouchableRipple>
+        <TouchableRipple
+          onPress={() => {
+            console.log("Ongoing");
+          }}
+          rippleColor={adaptive.paletteColorLightOrange}
+          className={`${adaptive.nativeWindNavbar} h-full flex-1 items-center px-4 border-l-2 border-l-overlay-blackLight`}
+        >
+          <View className="flex flex-row items-center justify-center mt-3">
+            <Ionicons
+              name="chatbubble-ellipses"
+              size={25}
+              color={adaptive.textColor}
+              style={{ marginRight: 10 }}
+            />
+            <Text
+              className={`${adaptive.nativeWindText} font-bold text-center align-center`}
+            >
+              Chat Now?
+            </Text>
+          </View>
+        </TouchableRipple>
+        <TouchableRipple
+          onPress={() => {
+            console.log("Ongoing");
+          }}
+          rippleColor={"#C0C0C080"}
+          className={`bg-palette-orange2 h-full flex-1 items-center px-4`}
+        >
+          <View className="flex flex-row items-center justify-center mt-3">
+            <Ionicons
+              name="cart"
+              size={25}
+              color={adaptive.textColor}
+              style={{ marginRight: 10 }}
+            />
+            <Text
+              className={`${adaptive.nativeWindText} font-bold text-center align-center`}
+            >
+              Add to cart
+            </Text>
+          </View>
+        </TouchableRipple>
+      </View>
     </SafeAreaView>
   );
 };

@@ -27,7 +27,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   global.debug = true;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
-  global.debugOverlayScreen = "HomeOverlay";
+  global.debugOverlayScreen = "ProfileOverlay";
   global.scheme = "dark";
 
   return (
@@ -42,29 +42,61 @@ export default function App() {
                 }
                 screenOptions={{
                   headerShown: false,
+                  animation: "fade",
                 }}
               >
-                <Stack.Screen name="splash" component={SplashScreen} />
+                <Stack.Screen
+                  name="splash"
+                  component={SplashScreen}
+                  options={{ animation: "fade" }}
+                />
                 <Stack.Screen
                   name="getting-started"
                   component={GettingStartedScreen}
+                  options={{ animation: "fade" }}
                 />
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen
                   name="notifications"
                   component={NotificationScreen}
+                  options={{
+                    animation: "fade_from_bottom",
+                  }}
                 />
-                <Stack.Screen name="about" component={AboutScreen} />
-                <Stack.Screen name="faq" component={FAQScreen} />
-                <Stack.Screen name="login" component={LoginScreen} />
-                <Stack.Screen name="register" component={RegisterScreen} />
+                <Stack.Screen
+                  name="about"
+                  component={AboutScreen}
+                  options={{ animation: "slide_from_right" }}
+                />
+                <Stack.Screen
+                  name="faq"
+                  component={FAQScreen}
+                  options={{ animation: "slide_from_right" }}
+                />
+                <Stack.Screen
+                  name="login"
+                  component={LoginScreen}
+                  options={{ animation: "fade_from_bottom" }}
+                />
+                <Stack.Screen
+                  name="register"
+                  component={RegisterScreen}
+                  options={{ animation: "fade_from_bottom" }}
+                />
                 <Stack.Screen name="settings" component={SettingsScreen} />
                 <Stack.Screen
                   name="categorized"
                   component={CategorizedViewerScreen}
+                  options={{ animation: "simple_push" }}
                 />
                 <Stack.Screen name="chatlist" component={ChatListScreen} />
-                <Stack.Screen name="chat" component={ChatScreen} />
+                <Stack.Screen
+                  name="chat"
+                  component={ChatScreen}
+                  options={{
+                    animation: "fade_from_bottom",
+                  }}
+                />
                 <Stack.Screen name="item" component={ItemScreen} />
                 <Stack.Screen name="reviews" component={ReviewsScreen} />
                 <Stack.Screen name="shop" component={ShopScreen} />
