@@ -18,13 +18,14 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { store } from "./lib/shared/redux/store";
 import LoginScreen from "./lib/screens/ProfileScreens/LoginScreen";
 import RegisterScreen from "./lib/screens/ProfileScreens/RegisterScreen";
+import ItemScreen from "./lib/screens/ItemScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   global.debug = true;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
-  global.debugOverlayScreen = "ProfileOverlay";
+  global.debugOverlayScreen = "HomeOverlay";
   global.scheme = "dark";
 
   return (
@@ -62,6 +63,7 @@ export default function App() {
                 />
                 <Stack.Screen name="chatlist" component={ChatListScreen} />
                 <Stack.Screen name="chat" component={ChatScreen} />
+                <Stack.Screen name="item" component={ItemScreen} />
               </Stack.Navigator>
             </NavigationContainer>
           </SafeAreaProvider>

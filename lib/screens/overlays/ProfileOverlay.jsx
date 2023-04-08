@@ -87,7 +87,7 @@ const ProfileOverlay = ({ navigation }) => {
           </Text>
           <Text className={`${adaptive.nativeWindText} text-sm mb-7`}>
             {user === undefined
-              ? "Please login to use all features"
+              ? "Please login to access all features"
               : "Anything you want to do?"}
           </Text>
         </View>

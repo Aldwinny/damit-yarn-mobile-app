@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { numberCompactor } from "../../utils/formatter";
+import { formatCurrency, numberCompactor } from "../../utils/formatter";
 import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
@@ -54,10 +54,7 @@ const ItemCard = ({
               color: textColor,
             }}
           >
-            {new Intl.NumberFormat("en-PH", {
-              style: "currency",
-              currency: "PHP",
-            }).format(item.price)}
+            {formatCurrency(item.price)}
           </Text>
           <View className="flex flex-row">
             <AntDesign

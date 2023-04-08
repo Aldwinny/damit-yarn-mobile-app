@@ -41,7 +41,7 @@ const trendingItems = [
     stars: 5.0,
     price: 450,
     sold: 11250,
-    name: "Lorem Ipsum Dolor Sit amet Consectetur Rainbow socks so cool",
+    name: "Handmade Rainbow Socks | made with love by The Crocheteers Society Incorporated | Try it now or else you will face consequences",
     location: "Quezon City, Metro Manila",
     shopName: "The Crocheteers",
   },
@@ -178,10 +178,14 @@ const HomeOverlay = ({ navigation }) => {
             {trendingItems.map((item) => {
               return (
                 <ItemPhotoCard
+                  uid={item.id}
                   key={item.id}
                   image={item.image}
                   shopName={item.shopName}
                   stars={item.stars}
+                  onPress={() =>
+                    navigation.navigate("item", { uid: item.id, item: item })
+                  }
                 />
               );
             })}
@@ -203,10 +207,14 @@ const HomeOverlay = ({ navigation }) => {
               {trendingItems.map((item) => {
                 return (
                   <ItemPhotoCard
+                    uid={item.id}
                     key={item.id}
                     image={item.image}
                     shopName={item.shopName}
                     stars={item.stars}
+                    onPress={() =>
+                      navigation.navigate("item", { uid: item.id, item: item })
+                    }
                   />
                 );
               })}
@@ -220,7 +228,7 @@ const HomeOverlay = ({ navigation }) => {
             >
               {/* TODO: Edit the following to be an actual card */}
               {trendingItems.map((item) => {
-                return <ItemCard item={item} key={item.id} />;
+                return <ItemCard item={item} id={item.id} key={item.id} />;
               })}
             </View>
           </View>

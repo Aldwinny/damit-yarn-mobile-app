@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 
-const ItemPhotoCard = ({ image, stars, shopName, onPress }) => {
+const ItemPhotoCard = ({ image, stars, shopName, onPress, uid }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 

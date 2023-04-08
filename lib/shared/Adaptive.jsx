@@ -27,6 +27,7 @@ const AdaptiveScheme = (globalScheme) => {
     nativeWindPalettedText: from("text-palette-orange2", "text-black"),
     nativeWindNavText: from("text-darkPalette-2", "text-white"),
     nativeWindText: from("text-white", "text-black"),
+    nativeWindIconColor: from("text-darkPalette-2", "text-black"),
     nativeWindNavbar: from("bg-darkPalette-4", "bg-palette-orange2"),
     nativeWindBackground: from("bg-darkPalette-5", "bg-white"),
   };
