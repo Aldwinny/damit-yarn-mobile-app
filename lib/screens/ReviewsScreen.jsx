@@ -91,7 +91,6 @@ const ReviewsScreen = ({ route, navigation }) => {
   const adaptive = AdaptiveScheme(theme.theme);
 
   const { id } = route.params;
-  console.log(id);
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>
       <Navbar

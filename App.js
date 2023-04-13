@@ -21,6 +21,7 @@ import RegisterScreen from "./lib/screens/ProfileScreens/RegisterScreen";
 import ItemScreen from "./lib/screens/ItemScreen";
 import ReviewsScreen from "./lib/screens/ReviewsScreen";
 import ShopScreen from "./lib/screens/ShopScreen";
+import DeliveryDetailsScreen from "./lib/screens/ProfileScreens/DeliveryDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -100,6 +101,10 @@ export default function App() {
                 <Stack.Screen name="item" component={ItemScreen} />
                 <Stack.Screen name="reviews" component={ReviewsScreen} />
                 <Stack.Screen name="shop" component={ShopScreen} />
+                <Stack.Screen
+                  name="details"
+                  component={DeliveryDetailsScreen}
+                />
               </Stack.Navigator>
             </NavigationContainer>
           </SafeAreaProvider>

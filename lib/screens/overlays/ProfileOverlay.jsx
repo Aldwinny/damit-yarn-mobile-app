@@ -20,6 +20,7 @@ import IconBarButton from "../../components/IconBarButton";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../shared/redux/themeSlice";
 import { TouchableRipple } from "react-native-paper";
+import SquareButton from "../../components/SquareButton";
 
 /**
  * Steps
@@ -28,7 +29,7 @@ import { TouchableRipple } from "react-native-paper";
  * 3. Resolve all things
  */
 
-// let user = new User({firstname: "Alds"});
+// let user = new User({ firstname: "Alds" });
 let user;
 
 const ProfileOverlay = ({ navigation }) => {
@@ -90,6 +91,67 @@ const ProfileOverlay = ({ navigation }) => {
               ? "Please login to access all features"
               : "Anything you want to do?"}
           </Text>
+        </View>
+
+        <NavLink
+          color={adaptive.palettedIconColor}
+          nativeWind="ml-3 mt-3"
+          textNativeWind="font-bold"
+        >
+          Shipping
+        </NavLink>
+
+        <View className="flex flex-row justify-center items-center mt-3">
+          <SquareButton
+            adaptive={adaptive}
+            title="To Pay"
+            onPress={() =>
+              navigation.push("details", {
+                tab: "pay",
+              })
+            }
+            icon={
+              <MaterialIcons
+                name="payment"
+                size={30}
+                color={adaptive.iconColor}
+              />
+            }
+          />
+          <Text className={`${adaptive.nativeWindText} text-5xl`}>·</Text>
+          <SquareButton
+            adaptive={adaptive}
+            title="To Ship"
+            onPress={() =>
+              navigation.push("details", {
+                tab: "ship",
+              })
+            }
+            icon={
+              <MaterialIcons
+                name="directions-ferry"
+                size={30}
+                color={adaptive.iconColor}
+              />
+            }
+          />
+          <Text className={`${adaptive.nativeWindText} text-5xl`}>·</Text>
+          <SquareButton
+            adaptive={adaptive}
+            title="To Receive"
+            onPress={() =>
+              navigation.push("details", {
+                tab: "receive",
+              })
+            }
+            icon={
+              <MaterialIcons
+                name="local-shipping"
+                size={30}
+                color={adaptive.iconColor}
+              />
+            }
+          />
         </View>
 
         <NavLink

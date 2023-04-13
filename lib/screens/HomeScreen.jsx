@@ -31,6 +31,7 @@ const HomeScreen = () => {
         }
         screenOptions={{
           headerShown: false,
+          lazy: true,
         }}
         tabBar={(props) => <TabBars {...props} />}
       >
@@ -38,6 +39,7 @@ const HomeScreen = () => {
           name="HomeOverlay"
           component={HomeOverlay}
           options={{
+            lazy: false,
             tabBarLabel: "Home",
             tabBarIcon: ({ color, size, style }) => (
               <Ionicons
