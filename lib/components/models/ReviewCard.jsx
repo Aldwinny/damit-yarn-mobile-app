@@ -5,8 +5,6 @@ import StarBuilder from "../StarBuilder";
 const ReviewCard = ({ review, adaptiveTheme }) => {
   const adaptive = adaptiveTheme;
 
-  console.log(review.item);
-
   return (
     <View className={`${adaptive.nativeWindNavbar} flex px-4 py-3`}>
       <View className={`flex flex-row items-center mb-3`}>
