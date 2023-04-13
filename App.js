@@ -26,7 +26,7 @@ import DeliveryDetailsScreen from "./lib/screens/ProfileScreens/DeliveryDetailsS
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  global.debug = true;
+  global.debug = false;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
   global.debugOverlayScreen = "ProfileOverlay";
   global.scheme = "dark";
@@ -104,6 +104,9 @@ export default function App() {
                 <Stack.Screen
                   name="details"
                   component={DeliveryDetailsScreen}
+                  options={{
+                    animation: "slide_from_bottom",
+                  }}
                 />
               </Stack.Navigator>
             </NavigationContainer>
