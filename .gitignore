@@ -10,6 +10,9 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Secrets / API Related stuff
+*.env
+
 # macOS
 .DS_Store
 

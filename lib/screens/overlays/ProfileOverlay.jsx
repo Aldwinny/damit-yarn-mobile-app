@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../shared/redux/themeSlice";
 import { TouchableRipple } from "react-native-paper";
 import SquareButton from "../../components/SquareButton";
+import { logOut } from "../../shared/redux/userSlice";
 
 /**
  * Steps
@@ -30,17 +31,26 @@ import SquareButton from "../../components/SquareButton";
  */
 
 // let user = new User({ firstname: "Alds" });
-let user;
 
 const ProfileOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user);
 
   const adaptive = AdaptiveScheme(theme.theme);
 
   const changeTheme = () => {
     dispatch(toggleTheme());
   };
+
+  const removeAccount = () => {
+    dispatch(logOut());
+    console.log("dispatched");
+    console.log(user);
+  };
+
+  console.log(user);
 
   const profileColor = adaptive.from("bg-darkPalette-4", "bg-palette-orange2");
 
@@ -84,10 +94,10 @@ const ProfileOverlay = ({ navigation }) => {
           <Text
             className={`${adaptive.nativeWindActiveNavText} text-xl font-bold mb-1`}
           >
-            Hello, {user?.username ?? "User"}!
+            Hello, {user.token === "" ? "User" : user.username}
           </Text>
           <Text className={`${adaptive.nativeWindText} text-sm mb-7`}>
-            {user === undefined
+            {user.token === ""
               ? "Please login to access all features"
               : "Anything you want to do?"}
           </Text>
@@ -201,7 +211,7 @@ const ProfileOverlay = ({ navigation }) => {
         >
           General
         </NavLink>
-        {user === undefined ? (
+        {user.token === "" ? (
           <IconBarButton
             icon={
               <AntDesign name="login" size={25} color={adaptive.iconColor} />
@@ -209,25 +219,24 @@ const ProfileOverlay = ({ navigation }) => {
             nativeWind={"border-t mt-3"}
             onPress={() => navigation.navigate("login")}
           >
-            Login
+            Login / Register
           </IconBarButton>
         ) : (
-          ""
+          <IconBarButton
+            icon={
+              <MaterialIcons
+                name="account-circle"
+                size={25}
+                color={adaptive.iconColor}
+              />
+            }
+            nativeWind={`border-t ${user.token === "" ? "" : "mt-3"}`}
+            onPress={() => navigation.navigate("settings")}
+          >
+            Account Settings
+          </IconBarButton>
         )}
 
-        <IconBarButton
-          icon={
-            <MaterialIcons
-              name="account-circle"
-              size={25}
-              color={adaptive.iconColor}
-            />
-          }
-          nativeWind={`border-t ${user === undefined ? "" : "mt-3"}`}
-          onPress={() => navigation.navigate("settings")}
-        >
-          Account Settings
-        </IconBarButton>
         <IconBarButton
           color={adaptive.iconColor}
           onPress={() => navigation.navigate("faq")}
@@ -242,13 +251,13 @@ const ProfileOverlay = ({ navigation }) => {
         >
           About the developer
         </IconBarButton>
-        {user !== undefined ? (
+        {user.token !== "" ? (
           <IconBarButton
             icon={
               <AntDesign name="logout" size={25} color={adaptive.iconColor} />
             }
             nativeWind={"border-y"}
-            onPress={() => console.log("Hmmm")}
+            onPress={removeAccount}
           >
             Log out
           </IconBarButton>

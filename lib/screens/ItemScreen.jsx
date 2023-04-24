@@ -35,7 +35,7 @@ const ItemScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
-  const { uid, item } = route.params;
+  const { uid, item, reversible } = route.params;
 
   item.review = [];
   // Sample review info
@@ -151,7 +151,11 @@ const ItemScreen = ({ route, navigation }) => {
         </View>
         <TouchableRipple
           onPress={() => {
-            navigation.navigate("shop", { id: item.sid });
+            if (reversible) {
+              navigation.pop();
+            } else {
+              navigation.push("shop", { id: item.sid });
+            }
           }}
           rippleColor={adaptive.paletteColorLightOrange}
           className={`${adaptive.nativeWindNavbar}`}
@@ -220,7 +224,7 @@ const ItemScreen = ({ route, navigation }) => {
             <ReviewCard review={item.review[0]} adaptiveTheme={adaptive} />
             <TouchableRipple
               onPress={() =>
-                navigation.navigate("reviews", {
+                navigation.push("reviews", {
                   id: item.uid,
                 })
               }

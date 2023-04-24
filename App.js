@@ -22,11 +22,14 @@ import ItemScreen from "./lib/screens/ItemScreen";
 import ReviewsScreen from "./lib/screens/ReviewsScreen";
 import ShopScreen from "./lib/screens/ShopScreen";
 import DeliveryDetailsScreen from "./lib/screens/ProfileScreens/DeliveryDetailsScreen";
+import CreateAccountScreen from "./lib/screens/ProfileScreens/CreateAccountScreen";
+import DeleteMyAccountScreen from "./lib/screens/ProfileScreens/DeleteMyAccountScreen";
+import UpdateMyAccountScreen from "./lib/screens/ProfileScreens/UpdateMyAccountScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  global.debug = false;
+  global.debug = true;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
   global.debugOverlayScreen = "ProfileOverlay";
   global.scheme = "dark";
@@ -73,6 +76,21 @@ export default function App() {
                   name="faq"
                   component={FAQScreen}
                   options={{ animation: "slide_from_right" }}
+                />
+                <Stack.Screen
+                  name="createaccount"
+                  component={CreateAccountScreen}
+                  options={{ animation: "slide_from_bottom" }}
+                />
+                <Stack.Screen
+                  name="updateaccount"
+                  component={UpdateMyAccountScreen}
+                  options={{ animation: "slide_from_bottom" }}
+                />
+                <Stack.Screen
+                  name="deleteaccount"
+                  component={DeleteMyAccountScreen}
+                  options={{ animation: "slide_from_bottom" }}
                 />
                 <Stack.Screen
                   name="login"

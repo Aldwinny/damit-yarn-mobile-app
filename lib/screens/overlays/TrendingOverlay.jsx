@@ -71,7 +71,7 @@ const trendingItems = [
   },
 ];
 
-const TrendingOverlay = () => {
+const TrendingOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
@@ -86,7 +86,15 @@ const TrendingOverlay = () => {
           className={`${adaptive.nativeWindBackground} flex-1 items-center mt-2`}
         >
           {trendingItems.map((item) => {
-            return <ItemCard item={item} key={item.id} />;
+            return (
+              <ItemCard
+                item={item}
+                key={item.id}
+                onPress={() =>
+                  navigation.navigate("item", { uid: item.id, item: item })
+                }
+              />
+            );
           })}
         </View>
       </ScrollView>

@@ -126,7 +126,7 @@ const HomeOverlay = ({ navigation }) => {
             />
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("chatlist");
+                navigation.push("chatlist");
               }}
               className={`${adaptive.nativeWindText} ml-auto`}
             >
@@ -138,7 +138,7 @@ const HomeOverlay = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("notifications");
+                navigation.push("notifications");
               }}
               className={`${adaptive.nativeWindText} mx-3`}
             >
@@ -184,7 +184,7 @@ const HomeOverlay = ({ navigation }) => {
                   shopName={item.shopName}
                   stars={item.stars}
                   onPress={() =>
-                    navigation.navigate("item", { uid: item.id, item: item })
+                    navigation.push("item", { uid: item.id, item: item })
                   }
                 />
               );
@@ -213,7 +213,7 @@ const HomeOverlay = ({ navigation }) => {
                     shopName={item.shopName}
                     stars={item.stars}
                     onPress={() =>
-                      navigation.navigate("item", { uid: item.id, item: item })
+                      navigation.push("item", { uid: item.id, item: item })
                     }
                   />
                 );
@@ -228,7 +228,16 @@ const HomeOverlay = ({ navigation }) => {
             >
               {/* TODO: Edit the following to be an actual card */}
               {trendingItems.map((item) => {
-                return <ItemCard item={item} id={item.id} key={item.id} />;
+                return (
+                  <ItemCard
+                    item={item}
+                    id={item.id}
+                    key={item.id}
+                    onPress={() =>
+                      navigation.push("item", { uid: item.id, item: item })
+                    }
+                  />
+                );
               })}
             </View>
           </View>

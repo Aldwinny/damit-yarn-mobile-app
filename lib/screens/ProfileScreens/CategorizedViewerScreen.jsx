@@ -282,6 +282,12 @@ const CategorizedViewerScreen = ({ route, navigation }) => {
               item={item.item}
               key={item.id}
               borderColor={adaptive.paletteColorOrange}
+              onPress={() => {
+                navigation.push("item", {
+                  uid: item.item.id,
+                  item: item.item,
+                });
+              }}
             />
           )}
         />

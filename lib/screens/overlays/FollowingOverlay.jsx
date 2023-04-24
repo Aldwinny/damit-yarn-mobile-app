@@ -71,7 +71,7 @@ const trendingItems = [
   },
 ];
 
-const FollowingOverlay = () => {
+const FollowingOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
@@ -91,6 +91,9 @@ const FollowingOverlay = () => {
                 item={item}
                 key={item.id}
                 borderColor={adaptive.paletteColorPink}
+                onPress={() =>
+                  navigation.navigate("item", { uid: item.id, item: item })
+                }
               />
             );
           })}
