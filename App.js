@@ -25,6 +25,7 @@ import DeliveryDetailsScreen from "./lib/screens/ProfileScreens/DeliveryDetailsS
 import CreateAccountScreen from "./lib/screens/ProfileScreens/CreateAccountScreen";
 import DeleteMyAccountScreen from "./lib/screens/ProfileScreens/DeleteMyAccountScreen";
 import UpdateMyAccountScreen from "./lib/screens/ProfileScreens/UpdateMyAccountScreen";
+import ModifyItemScreen from "./lib/screens/ProfileScreens/ModifyItemScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -90,6 +91,11 @@ export default function App() {
                 <Stack.Screen
                   name="deleteaccount"
                   component={DeleteMyAccountScreen}
+                  options={{ animation: "slide_from_bottom" }}
+                />
+                <Stack.Screen
+                  name="modifyitem"
+                  component={ModifyItemScreen}
                   options={{ animation: "slide_from_bottom" }}
                 />
                 <Stack.Screen

@@ -13,7 +13,7 @@ import validator from "../../utils/validate";
 
 import YarnImage from "../../../assets/logo/DamitYarn.png";
 import { useEffect } from "react";
-import { loginUser } from "../../services/api/UserAPI";
+import { loginUser } from "../../services/api/userAPI";
 import { updateUserData } from "../../shared/redux/userSlice";
 
 const LoginScreen = ({ navigation }) => {

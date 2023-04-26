@@ -7,7 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../../components/Navbar";
 import { ScrollView } from "react-native";
 import { ActivityIndicator, TouchableRipple } from "react-native-paper";
-import { checkMatchPassword, deleteUser } from "../../services/api/UserAPI";
+import { checkMatchPassword, deleteUser } from "../../services/api/userAPI";
 import { logOut } from "../../shared/redux/userSlice";
 
 const DeleteMyAccountScreen = ({ navigation }) => {

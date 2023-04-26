@@ -204,6 +204,29 @@ const ProfileOverlay = ({ navigation }) => {
         >
           Liked
         </IconBarButton>
+        {user.token !== "" && user.shopId !== 0 ? (
+          <>
+            <NavLink
+              color={adaptive.palettedIconColor}
+              nativeWind="ml-3 mt-3"
+              textNativeWind="font-bold"
+            >
+              Shop Maintenance
+            </NavLink>
+            <IconBarButton
+              icon={
+                <AntDesign name="login" size={25} color={adaptive.iconColor} />
+              }
+              nativeWind={"border-t mt-3"}
+              onPress={() => navigation.navigate("modifyitem")}
+            >
+              Modify / Add Items
+            </IconBarButton>
+          </>
+        ) : (
+          ""
+        )}
+
         <NavLink
           color={adaptive.palettedIconColor}
           nativeWind="ml-3 mt-3"

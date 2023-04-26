@@ -7,7 +7,7 @@ import { Button } from "react-native-paper";
 import { testDB } from "../../services/api/Database";
 
 import { logOut, updateUserData } from "../../shared/redux/userSlice";
-import { deleteUser } from "../../services/api/UserAPI";
+import { deleteUser } from "../../services/api/userAPI";
 
 const CartOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);

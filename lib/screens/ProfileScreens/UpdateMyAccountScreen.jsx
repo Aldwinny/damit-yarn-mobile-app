@@ -17,7 +17,7 @@ import { Image } from "react-native";
 import { ActivityIndicator, TouchableRipple } from "react-native-paper";
 import { TextInput } from "react-native";
 import { CountryPicker } from "react-native-country-codes-picker";
-import { checkMatchPassword, updateUser } from "../../services/api/UserAPI";
+import { checkMatchPassword, updateUser } from "../../services/api/userAPI";
 import { updateUserData } from "../../shared/redux/userSlice";
 
 const UpdateMyAccountScreen = ({ navigation }) => {

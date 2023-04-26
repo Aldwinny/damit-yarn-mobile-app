@@ -13,7 +13,7 @@ import AdaptiveScheme from "../../shared/Adaptive";
 import YarnImage from "../../../assets/logo/DamitYarn.png";
 import { useState } from "react";
 import { useEffect } from "react";
-import { registerUser } from "../../services/api/UserAPI";
+import { registerUser } from "../../services/api/userAPI";
 import { updateUserData } from "../../shared/redux/userSlice";
 
 const CreateAccountScreen = ({ route, navigation }) => {
@@ -41,6 +41,7 @@ const CreateAccountScreen = ({ route, navigation }) => {
       fetchData()
         .then((res) => {
           setResponse(res);
+          console.log(res);
           changeUser({ ...res.data.user, token: res.data.token ?? "" });
         })
         .catch((err) => console.log("An error may have occurred"));
