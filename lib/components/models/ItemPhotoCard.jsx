@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 
-const ItemPhotoCard = ({ image, stars, shopName, onPress, uid }) => {
+const ItemPhotoCard = ({ item, onPress }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
@@ -28,7 +28,7 @@ const ItemPhotoCard = ({ image, stars, shopName, onPress, uid }) => {
             width: "100%",
             height: "80%",
           }}
-          source={image}
+          source={item.image}
         />
         <View className="flex flex-row items-center mt-2">
           <AntDesign name="star" color={adaptive.paletteColorYellow} />
@@ -40,7 +40,7 @@ const ItemPhotoCard = ({ image, stars, shopName, onPress, uid }) => {
             ellipsizeMode="tail"
             numberOfLines={1}
           >
-            {` ${stars.toFixed(1)} · ${shopName}`}
+            {` ${item.stars.toFixed(1)} · ${item.shopname}`}
           </Text>
         </View>
       </View>

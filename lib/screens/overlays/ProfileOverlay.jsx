@@ -9,7 +9,6 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 // Local Components
 import AdaptiveScheme from "../../shared/Adaptive";
-import { User } from "../../services/models/User";
 
 // Asset imports
 import DefaultImage from "../../../assets/images/avatar/avatar_male.png";
@@ -62,7 +61,7 @@ const ProfileOverlay = ({ navigation }) => {
       >
         <View className={`${profileColor} flex items-center`}>
           <Image
-            source={user?.image ?? DefaultImage}
+            source={user?.image ? { uri: user.image } : DefaultImage}
             className={`rounded-full m-10 mb-3 h-32 w-32`}
             resizeMode="cover"
           />
@@ -204,7 +203,7 @@ const ProfileOverlay = ({ navigation }) => {
         >
           Liked
         </IconBarButton>
-        {user.token !== "" && user.shopId !== 0 ? (
+        {user.token !== "" && user.shopid ? (
           <>
             <NavLink
               color={adaptive.palettedIconColor}

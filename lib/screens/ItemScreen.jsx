@@ -9,7 +9,8 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import defaultFeaturedImage from "../../assets/images/temp/bg-features.jpg";
-import defaultAvatarImage from "../../assets/images/temp/bg-avatar-circle.jpg";
+import defaultAvatarImage from "../../assets/images/avatar/avatar_male.png";
+import defaultAvatarImage2 from "../../assets/images/avatar/avatar_female.png";
 import catDarkMode from "../../assets/images/cat-dark-mode.png";
 import catLightMode from "../../assets/images/cat-light-mode.png";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,6 +19,13 @@ import { formatCurrency, numberCompactor } from "../utils/formatter";
 import { TouchableRipple } from "react-native-paper";
 import ReviewCard from "../components/models/ReviewCard";
 import StarBuilder from "../components/StarBuilder";
+import { RefreshControl } from "react-native";
+import { useCallback } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { addItemToCart, getItemReviews } from "../services/api/items";
+import { useRef } from "react";
+import KeywordBuilder from "../components/models/KeywordBuilder";
 
 const featuredItems = [
   {
@@ -35,21 +43,70 @@ const ItemScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
+  const user = useSelector((state) => state.user);
+
   const { uid, item, reversible } = route.params;
 
-  item.review = [];
-  // Sample review info
-  item.review = [
-    {
-      id: 1,
-      uid: 1,
-      name: "Elaina so cuteeeeeee",
-      image: defaultAvatarImage,
-      description: "I like your product. Please make more!",
-      stars: 5,
-    },
-  ];
+  const [refreshing, setRefreshing] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
+  const reviews = useRef([]);
 
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+
+    const getReviews = async () => {
+      return await getItemReviews({
+        id: item.id,
+      });
+    };
+
+    const timer = setTimeout(() => {
+      if (refreshing) {
+        setRefreshing(false);
+      }
+    }, 10000);
+
+    getReviews()
+      .then((res) => {
+        // console.log(res.data);
+        reviews.current = JSON.parse(JSON.stringify(res.data));
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        setRefreshing(false);
+        clearTimeout(timer);
+      });
+  });
+
+  const addToCart = () => {
+    console.log("runnign");
+    addItemToCart({
+      item: item.id,
+      user: user.id,
+      token: user.token,
+    })
+      .then((res) => {
+        // console.log(res); // TODO: poerform
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  console.log(reviews);
+
+  useEffect(() => {
+    if (firstRender) {
+      onRefresh();
+      setFirstRender(false);
+    }
+  }, [onRefresh, setFirstRender]);
+
+  /**
+   * Function that allows for sharing of data by sharing it as text
+   */
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -84,6 +141,9 @@ const ItemScreen = ({ route, navigation }) => {
       <ScrollView
         className={`${adaptive.nativeWindBackground} flex`}
         contentContainerStyle={{ paddingBottom: 25 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
         <CarouselItemBuilder items={featuredItems} />
         <View className={`m-4`}>
@@ -142,19 +202,28 @@ const ItemScreen = ({ route, navigation }) => {
           >
             Keywords
           </Text>
-          <View className="flex flex-row my-2">
-            <Text className="text-white">Hi</Text>
-            <Text className="text-white">Hi</Text>
-            <Text className="text-white">Hi</Text>
-            <Text className="text-white">Hi</Text>
-          </View>
+          <KeywordBuilder keywords={item.keywords} />
+          <Text
+            className={`${adaptive.nativeWindActiveNavText} mt-4 font-bold text-lg`}
+          >
+            Description
+          </Text>
+          <Text className={`${adaptive.nativeWindText} text-base mt-2`}>
+            {item.description}
+          </Text>
         </View>
         <TouchableRipple
           onPress={() => {
             if (reversible) {
               navigation.pop();
             } else {
-              navigation.push("shop", { id: item.sid });
+              navigation.push("shop", {
+                id: item.shopid,
+                shopname: item.shopname,
+                shopdescription: item.shopdescription,
+                shophint: item.shophint,
+                shopimage: item.shopimage,
+              });
             }
           }}
           rippleColor={adaptive.paletteColorLightOrange}
@@ -163,7 +232,13 @@ const ItemScreen = ({ route, navigation }) => {
           <View className={`flex flex-row items-center my-2 px-4 py-1`}>
             <View className={`w-16 h-16`}>
               <Image
-                source={defaultAvatarImage}
+                source={
+                  item.shopimage
+                    ? { uri: item.shopimage }
+                    : Math.floor(Math.random() * 2) + 1 === 1
+                    ? defaultAvatarImage
+                    : defaultAvatarImage2
+                }
                 className={`rounded-full w-full h-full`}
                 resizeMode="cover"
               />
@@ -175,7 +250,7 @@ const ItemScreen = ({ route, navigation }) => {
                 ellipsizeMode="tail"
                 numberOfLines={1}
               >
-                {item.shopName}
+                {item.shopname}
               </Text>
               <View className="flex flex-row items-center mt-1">
                 <FontAwesome5
@@ -189,11 +264,11 @@ const ItemScreen = ({ route, navigation }) => {
                   {item.location}
                 </Text>
               </View>
-              {item.hint && (
+              {item.shophint && (
                 <Text
                   className={`${adaptive.nativeWindIconColor} text-xs mt-1`}
                 >
-                  {item.hint}
+                  {item.shophint}
                 </Text>
               )}
             </View>
@@ -204,7 +279,7 @@ const ItemScreen = ({ route, navigation }) => {
         >
           Reviews
         </Text>
-        {item.review.length === 0 ? (
+        {reviews.current.length === 0 ? (
           <View
             className={`${adaptive.nativeWindNavbar} p-3 flex items-center justify-center`}
           >
@@ -221,11 +296,11 @@ const ItemScreen = ({ route, navigation }) => {
           </View>
         ) : (
           <>
-            <ReviewCard review={item.review[0]} adaptiveTheme={adaptive} />
+            <ReviewCard review={reviews.current[0]} adaptiveTheme={adaptive} />
             <TouchableRipple
               onPress={() =>
                 navigation.push("reviews", {
-                  id: item.uid,
+                  reviews: reviews.current,
                 })
               }
               rippleColor={adaptive.paletteColorLightOrange}
@@ -261,7 +336,7 @@ const ItemScreen = ({ route, navigation }) => {
         </TouchableRipple>
         <TouchableRipple
           onPress={() => {
-            console.log("Ongoing");
+            console.log("no functions yet");
           }}
           rippleColor={adaptive.paletteColorLightOrange}
           className={`${adaptive.nativeWindNavbar} h-full flex-1 items-center px-4 border-l-2 border-l-overlay-blackLight`}
@@ -282,7 +357,7 @@ const ItemScreen = ({ route, navigation }) => {
         </TouchableRipple>
         <TouchableRipple
           onPress={() => {
-            console.log("Ongoing");
+            addToCart();
           }}
           rippleColor={"#C0C0C080"}
           className={`bg-palette-orange2 h-full flex-1 items-center px-4`}

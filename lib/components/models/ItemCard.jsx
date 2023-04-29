@@ -67,7 +67,7 @@ const ItemCard = ({
               }}
             />
             <Text className={`${adaptive.nativeWindText}`}>
-              {item.stars.toFixed(1)} · {item.shopName}
+              {item.stars.toFixed(1)} · {item.shopname}
             </Text>
           </View>
           <View className="flex flex-row">

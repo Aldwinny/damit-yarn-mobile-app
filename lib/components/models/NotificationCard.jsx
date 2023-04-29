@@ -1,5 +1,4 @@
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import { Notification } from "../../services/models/notification";
 import React from "react";
 import AdaptiveScheme from "../../shared/Adaptive";
 import { useSelector } from "react-redux";
@@ -16,16 +15,14 @@ const NotificationCard = ({
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
-  const notif =
-    notification ??
-    new Notification({
-      hint: hint,
-      icon: icon,
-      title: title,
-      description: description,
-      isNew: isNew,
-      color: color,
-    });
+  const notif = notification ?? {
+    hint: hint,
+    icon: icon,
+    title: title,
+    description: description,
+    isNew: isNew,
+    color: color,
+  };
 
   return (
     <TouchableOpacity>

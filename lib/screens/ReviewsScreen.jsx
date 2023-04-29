@@ -11,86 +11,11 @@ import catLightMode from "../../assets/images/cat-light-mode.png";
 
 import defaultAvatarImage from "../../assets/images/temp/bg-avatar-circle.jpg";
 
-const reviews = [
-  {
-    id: 1,
-    uid: 1,
-    name: "Elaina so cuteeeeeee",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 2,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 3,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 4,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 5,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 6,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 7,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 8,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 5,
-  },
-  {
-    id: 9,
-    uid: 1,
-    name: "WOWWWWWWW",
-    image: defaultAvatarImage,
-    description: "I like your product. Please make more!",
-    stars: 3.5,
-  },
-];
-
 const ReviewsScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
-  const { id } = route.params;
+  const { reviews } = route.params;
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>
       <Navbar

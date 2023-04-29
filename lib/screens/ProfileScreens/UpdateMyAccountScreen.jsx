@@ -17,8 +17,16 @@ import { Image } from "react-native";
 import { ActivityIndicator, TouchableRipple } from "react-native-paper";
 import { TextInput } from "react-native";
 import { CountryPicker } from "react-native-country-codes-picker";
-import { checkMatchPassword, updateUser } from "../../services/api/userAPI";
+import {
+  checkMatchPassword,
+  updateUser,
+  uploadUserPhoto,
+} from "../../services/api/userAPI";
 import { updateUserData } from "../../shared/redux/userSlice";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+import mime from "mime";
+import * as ImagePicker from "expo-image-picker";
 
 const UpdateMyAccountScreen = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
@@ -118,6 +126,46 @@ const UpdateMyAccountScreen = ({ navigation }) => {
     [false, ""],
   ]);
 
+  const [isUploading, setIsUploading] = useState(false);
+
+  const uploadPhoto = async () => {
+    setIsUploading(true);
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      const newImageURI =
+        `file:///` + result.assets[0].uri.split("file:/").join("");
+
+      let formData = new FormData();
+
+      formData.append("image", {
+        uri: newImageURI,
+        name: newImageURI.split("/").pop(),
+        type: mime.getType(newImageURI),
+      });
+
+      uploadUserPhoto(formData, user)
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(updateUserData({ image: res.data.image }));
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsUploading(false);
+        });
+    } else {
+      setIsUploading(false);
+    }
+  };
+
   const validate = () => {
     const arrayValidation = [
       validator.validate(firstName, validator.INFO.NAME)[0],
@@ -149,13 +197,39 @@ const UpdateMyAccountScreen = ({ navigation }) => {
         contentContainerStyle={{ paddingBottom: 25 }}
       >
         <View className={`${adaptive.nativeWindBackground} flex`}>
-          <Image source={YarnImage} className={`h-36 w-36 mt-5 self-center`} />
+          <Image
+            source={user.image ? { uri: user.image } : YarnImage}
+            className={`h-36 w-36 mt-5 self-center rounded-full`}
+          />
+
           <Text
             className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
           >
             User Information
           </Text>
+
           <View className={`m-3 flex-1`}>
+            {isUploading && (
+              <View
+                className={`flex flex-row items-center justify-center my-3`}
+              >
+                <ActivityIndicator size={30} />
+                <Text className={`${adaptive.nativeWindText} ml-5`}>
+                  Uploading...
+                </Text>
+              </View>
+            )}
+            <TouchableRipple
+              className={`bg-purple-500 rounded-full p-2 mb-2`}
+              onPress={() => {
+                uploadPhoto();
+              }}
+            >
+              <Text className={`text-white text-center font-bold`}>
+                Upload a profile photo
+              </Text>
+            </TouchableRipple>
+
             {/* First name */}
             <Text
               className={`${
@@ -405,6 +479,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               </View>
             )}
             <TouchableRipple
+              disabled={isUploading}
               onPress={() => {
                 const isValid = validate();
 
@@ -413,7 +488,9 @@ const UpdateMyAccountScreen = ({ navigation }) => {
                   performRequest();
                 }
               }}
-              className={`bg-purple-500 mt-7 mb-5 mx-4 py-2 rounded-lg`}
+              className={`${
+                isUploading ? "bg-gray-700" : "bg-purple-500"
+              } mt-7 mb-5 mx-4 py-2 rounded-lg`}
             >
               <Text className={`text-center font-bold text-white text-lg`}>
                 Update my account details

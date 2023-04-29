@@ -2,15 +2,26 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import StarBuilder from "../StarBuilder";
 
+import defaultAvatarImage from "../../../assets/images/avatar/avatar_male.png";
+import defaultAvatarImage2 from "../../../assets/images/avatar/avatar_female.png";
+
 const ReviewCard = ({ review, adaptiveTheme }) => {
   const adaptive = adaptiveTheme;
+
+  console.log(review);
 
   return (
     <View className={`${adaptive.nativeWindNavbar} flex px-4 py-3`}>
       <View className={`flex flex-row items-center mb-3`}>
         <View className={`w-12 h-12`}>
           <Image
-            source={review.image}
+            source={
+              review.reviewerimage
+                ? { uri: review.reviewerimage }
+                : Math.floor(Math.random() * 2) + 1 === 1
+                ? defaultAvatarImage
+                : defaultAvatarImage2
+            }
             className={`rounded-full w-full h-full`}
             resizeMode="cover"
           />
@@ -34,7 +45,7 @@ const ReviewCard = ({ review, adaptiveTheme }) => {
         numberOfLines={5}
         ellipsizeMode="tail"
       >
-        {review.description}
+        {review.review}
       </Text>
     </View>
   );
