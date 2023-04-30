@@ -22,6 +22,8 @@ const CarouselItemBuilder = ({ items }) => {
   const progressValue = useSharedValue(0);
   const [indexor, setIndexor] = useState(1);
 
+  console.log(items);
+
   return (
     <View className="items-center">
       <Carousel
@@ -40,7 +42,7 @@ const CarouselItemBuilder = ({ items }) => {
           return (
             <View style={{ flex: 1, borderWidth: 1, justifyContent: "center" }}>
               <ImageBackground
-                source={item.image}
+                source={{ uri: item }}
                 resizeMode="cover"
                 style={{ flex: 1 }}
               ></ImageBackground>

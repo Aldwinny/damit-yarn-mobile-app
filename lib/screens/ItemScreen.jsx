@@ -27,18 +27,6 @@ import { addItemToCart, getItemReviews } from "../services/api/items";
 import { useRef } from "react";
 import KeywordBuilder from "../components/models/KeywordBuilder";
 
-const featuredItems = [
-  {
-    image: defaultFeaturedImage,
-  },
-  {
-    image: defaultFeaturedImage,
-  },
-  {
-    image: defaultFeaturedImage,
-  },
-];
-
 const ItemScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
@@ -95,8 +83,6 @@ const ItemScreen = ({ route, navigation }) => {
       });
   };
 
-  console.log(reviews);
-
   useEffect(() => {
     if (firstRender) {
       onRefresh();
@@ -111,8 +97,7 @@ const ItemScreen = ({ route, navigation }) => {
     try {
       const result = await Share.share({
         title: item.name,
-        message:
-          "Look at this item that I found on Damit Yarn!\n[Insert link to damit yarn backend that will relay the user back to the app]",
+        message: `Look at this item that I found on Damit Yarn!\n${item.name}: ${item.description}\n ${item.image[0]}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -145,7 +130,7 @@ const ItemScreen = ({ route, navigation }) => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <CarouselItemBuilder items={featuredItems} />
+        <CarouselItemBuilder items={item.image} />
         <View className={`m-4`}>
           <Text
             className={`${adaptive.nativeWindText} ${

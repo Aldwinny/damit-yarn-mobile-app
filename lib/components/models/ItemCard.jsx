@@ -38,7 +38,7 @@ const ItemCard = ({
             width: width / 3.5,
             height: width / 3.5,
           }}
-          source={item.image}
+          source={{ uri: item.image[0] }}
         />
         <View className="flex-1 flex-col ml-2 w-full">
           <Text

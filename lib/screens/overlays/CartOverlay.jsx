@@ -1,77 +1,81 @@
 import React, { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import {
+  Pressable,
+  RefreshControl,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 
 import AdaptiveScheme from "../../shared/Adaptive";
-import { useSelector, useDispatch } from "react-redux";
-import { Button } from "react-native-paper";
-import { testDB, uploadFile } from "../../services/api/Database";
-
-import { logOut, updateUserData } from "../../shared/redux/userSlice";
-import { deleteUser } from "../../services/api/userAPI";
-import { PermissionsAndroid } from "react-native";
-
-import mime from "mime";
-import * as ImagePicker from "expo-image-picker";
+import { useSelector } from "react-redux";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Navbar from "../../components/Navbar";
+import { useCallback } from "react";
+import { useEffect } from "react";
+import { TouchableRipple } from "react-native-paper";
 
 const CartOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
+
   const user = useSelector((state) => state.user);
+
   const adaptive = AdaptiveScheme(theme.theme);
 
-  const dispatch = useDispatch();
+  const [refreshing, setRefreshing] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
 
-  // const changeUser = (data) => {
-  //   dispatch(updateUserData(data));
-  // };
+  // Gets updated by api request
+  const [items, setItems] = useState([]);
 
-  const [times, setTimes] = useState(0);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+
+    const timer = setTimeout(() => {
+      if (refreshing) {
+        setRefreshing(false);
+      }
+    }, 10000);
+
+    // API request
+    setRefreshing(false);
+  });
+
+  useEffect(() => {
+    if (firstRender) {
+      onRefresh();
+      setFirstRender(false);
+    }
+  }, [onRefresh]);
 
   return (
-    <View
-      className={`${adaptive.nativeWindBackground} flex-1 justify-center items-center`}
-    >
-      <Text className="text-lg text-red-400 text-center mx-5 mb-2">
-        This is the cart screen
-      </Text>
-      <Button
-        icon="account-cowboy-hat"
-        mode="contained"
-        onPress={async () => {
-          console.log(user);
-          setTimes(times + 1);
-
-          let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1,
-          });
-
-          if (!result.canceled) {
-            const newImageUri =
-              `file:///` + result.assets[0].uri.split("file:/").join("");
-            let formData = new FormData();
-            formData.append("image", {
-              uri: newImageUri,
-              name: newImageUri.split("/").pop(),
-              type: mime.getType(newImageUri),
-            });
-
-            console.log(formData);
-
-            uploadFile(formData)
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }
-        }}
+    <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>
+      <Navbar title="Cart" />
+      <ScrollView
+        className={`${adaptive.nativeWindBackground} h-full`}
+        contentContainerStyle={{ paddingBottom: 10 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
-        {`You've pressed me ${times} times! Yeehaw!`}
-      </Button>
-    </View>
+        <Text>Hello</Text>
+      </ScrollView>
+      <View className={`flex flex-row items-center`}>
+        <TouchableRipple
+          onPress={() => {}}
+          rippleColor={"#C0C0C080"}
+          className={`bg-palette-orange2 h-full flex-1 items-center px-4`}
+        >
+          <View className="flex flex-row items-center justify-center my-3">
+            <Text
+              className={`${adaptive.nativeWindText} font-bold text-center text-lg align-center`}
+            >
+              Checkout
+            </Text>
+          </View>
+        </TouchableRipple>
+      </View>
+    </SafeAreaView>
   );
 };
 

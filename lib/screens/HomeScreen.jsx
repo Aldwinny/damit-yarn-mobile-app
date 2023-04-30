@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import HomeOverlay from "./overlays/HomeOverlay";
 import TrendingOverlay from "./overlays/TrendingOverlay";
 import CartOverlay from "./overlays/CartOverlay";
-import FollowingOverlay from "./overlays/FollowingOverlay";
 import ProfileOverlay from "./overlays/ProfileOverlay";
 import TabBars from "../components/tab/TabBars";
 
@@ -74,21 +73,6 @@ const HomeScreen = () => {
             tabBarIcon: ({ color, size, style }) => (
               <MaterialIcons
                 name="shopping-cart"
-                color={color}
-                size={size ?? 25}
-                style={style}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="FollowingOverlay"
-          component={FollowingOverlay}
-          options={{
-            tabBarLabel: "Following",
-            tabBarIcon: ({ color, size, style }) => (
-              <Entypo
-                name="shop"
                 color={color}
                 size={size ?? 25}
                 style={style}

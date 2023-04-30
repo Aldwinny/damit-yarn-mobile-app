@@ -102,13 +102,6 @@ const HomeOverlay = ({ navigation }) => {
     }
   }, [onRefresh, setFirstRender]);
 
-  if (items.current !== undefined) {
-    items.current = items.current.map((obj) => {
-      obj.image = defaultItemImage;
-      return obj;
-    });
-  }
-
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar}`}>
       <View
@@ -188,33 +181,6 @@ const HomeOverlay = ({ navigation }) => {
           </View>
 
           <View className={`${adaptive.nativeWindBackground} flex-1 mt-3`}>
-            <NavLink
-              onPress={() => {
-                navigation.navigate("FollowingOverlay");
-              }}
-              color={adaptive.paletteColorPink}
-              nativeWind="ml-3 mt-3"
-            >
-              Following
-            </NavLink>
-            <View
-              className={`flex flex-wrap flex-row mt-2 my-3 w-full items-center justify-center`}
-            >
-              {trendingItems !== undefined
-                ? trendingItems.slice(0, 6).map((item) => {
-                    return (
-                      <ItemPhotoCard
-                        key={item.id}
-                        item={item}
-                        onPress={() =>
-                          navigation.push("item", { uid: item.id, item: item })
-                        }
-                      />
-                    );
-                  })
-                : ""}
-            </View>
-
             <NavLink color={adaptive.paletteColorYellow} nativeWind="ml-3 mt-3">
               More Products
             </NavLink>

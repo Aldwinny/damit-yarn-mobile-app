@@ -28,7 +28,7 @@ const ItemPhotoCard = ({ item, onPress }) => {
             width: "100%",
             height: "80%",
           }}
-          source={item.image}
+          source={{ uri: item.image[0] }}
         />
         <View className="flex flex-row items-center mt-2">
           <AntDesign name="star" color={adaptive.paletteColorYellow} />

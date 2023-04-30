@@ -130,13 +130,6 @@ const TrendingOverlay = ({ navigation }) => {
     }
   }, [onRefresh]);
 
-  if (items.current !== undefined) {
-    items.current = items.current.map((obj) => {
-      obj.image = defaultItemImage;
-      return obj;
-    });
-  }
-
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>
       <Navbar title="Trending" />

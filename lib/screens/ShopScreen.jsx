@@ -57,11 +57,6 @@ const ShopScreen = ({ route, navigation }) => {
       });
   });
 
-  items.current = items.current.map((obj) => {
-    obj.image = defaultItemImage;
-    return obj;
-  });
-
   useEffect(() => {
     if (firstRender) {
       onRefresh();

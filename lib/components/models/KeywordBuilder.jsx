@@ -9,7 +9,7 @@ const KeywordBuilder = ({ keywords }) => {
   const adaptive = AdaptiveScheme(theme.theme);
 
   return (
-    <View className="flex flex-row my-3">
+    <View className="flex flex-row flex-wrap my-3">
       {keywords.map((k, index) => (
         <KeywordChip keyword={k} key={index} />
       ))}
@@ -20,7 +20,7 @@ const KeywordBuilder = ({ keywords }) => {
 const KeywordChip = ({ keyword }) => {
   return (
     <TouchableRipple
-      className={`bg-palette-orange3 rounded-full py-1 px-2 mr-2`}
+      className={`bg-palette-orange3 rounded-full py-1 px-2 mr-2 my-1`}
       rippleColor="rgba(0,0,0,0.5)"
       onPress={() => {
         console.log(keyword);

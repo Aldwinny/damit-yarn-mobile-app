@@ -151,7 +151,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
 
       uploadUserPhoto(formData, user)
         .then((res) => {
-          if (res.status === 200) {
+          if (res.status === 201) {
             dispatch(updateUserData({ image: res.data.image }));
           }
         })
