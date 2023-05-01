@@ -4,13 +4,8 @@
     "slug": "damitYarnMobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo/DamitYarn.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -19,12 +14,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo/DamitYarn.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "io.github.aldwinny.damityarn"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo/DamitYarn.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ed044a97-4e7a-498a-af29-b38219a2f769"
+      }
     }
   }
 }
