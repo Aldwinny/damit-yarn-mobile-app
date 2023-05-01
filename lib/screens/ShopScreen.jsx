@@ -34,7 +34,7 @@ const ShopScreen = ({ route, navigation }) => {
     setRefreshing(true);
 
     const getShopItems = async () => {
-      return await getItemsFromShop({ id: id });
+      return await getItemsFromShop({ shopid: id });
     };
 
     const timer = setTimeout(() => {

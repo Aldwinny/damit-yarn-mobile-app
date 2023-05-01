@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, Share, Alert, Image } from "react-native";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AdaptiveScheme from "../shared/Adaptive";
 import CarouselItemBuilder from "../components/CarouselItemBuilder";
 
@@ -26,12 +26,15 @@ import { useState } from "react";
 import { addItemToCart, getItemReviews } from "../services/api/items";
 import { useRef } from "react";
 import KeywordBuilder from "../components/models/KeywordBuilder";
+import { addLikes, removeLikes, toggleLike } from "../shared/redux/userSlice";
 
 const ItemScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
   const adaptive = AdaptiveScheme(theme.theme);
 
   const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   const { uid, item, reversible } = route.params;
 
@@ -117,6 +120,8 @@ const ItemScreen = ({ route, navigation }) => {
     }
   };
 
+  console.log(user);
+
   return (
     <SafeAreaView className={`${adaptive.nativeWindNavbar} flex-1`}>
       <Navbar
@@ -154,7 +159,11 @@ const ItemScreen = ({ route, navigation }) => {
           <View className="flex flex-row mt-6">
             <TouchableRipple
               onPress={() => {
-                item.heart === true;
+                if (user.id === 0) {
+                  Alert.alert("Login", "Please log in first!");
+                  return;
+                }
+                dispatch(toggleLike(item.id));
               }}
               className="p-2 rounded-full"
               rippleColor={
@@ -163,7 +172,7 @@ const ItemScreen = ({ route, navigation }) => {
               borderless={true}
             >
               <FontAwesome
-                name={item.heart ? "heart" : "heart-o"}
+                name={user.likes.indexOf(item.id) > -1 ? "heart" : "heart-o"}
                 size={20}
                 color={adaptive.paletteColorYellow}
               />
@@ -306,7 +315,11 @@ const ItemScreen = ({ route, navigation }) => {
       <View className={`flex flex-row items-center`}>
         <TouchableRipple
           onPress={() => {
-            item.heart === true;
+            if (user.id === 0) {
+              Alert.alert("Login", "Please log in first!");
+              return;
+            }
+            dispatch(toggleLike(item.id));
           }}
           className="px-4 py-2 m-2 rounded-full"
           rippleColor={
@@ -315,7 +328,7 @@ const ItemScreen = ({ route, navigation }) => {
           borderless={true}
         >
           <FontAwesome
-            name={item.heart ? "heart" : "heart-o"}
+            name={user.likes.indexOf(item.id) > -1 ? "heart" : "heart-o"}
             size={20}
             color={adaptive.paletteColorYellow}
           />
@@ -343,6 +356,10 @@ const ItemScreen = ({ route, navigation }) => {
         </TouchableRipple>
         <TouchableRipple
           onPress={() => {
+            if (user.id === 0) {
+              Alert.alert("Login", "Please log in first!");
+              return;
+            }
             addToCart();
           }}
           rippleColor={"#C0C0C080"}

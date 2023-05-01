@@ -66,7 +66,7 @@ const ModifyItemScreen = ({ navigation }) => {
   const refreshItems = () => {
     setIsRefreshing(true);
 
-    getItemsFromShop({ id: user.shopid })
+    getItemsFromShop({ shopid: user.shopid })
       .then((res) => {
         if (res.status === 200) {
           setShopItems(res.data);

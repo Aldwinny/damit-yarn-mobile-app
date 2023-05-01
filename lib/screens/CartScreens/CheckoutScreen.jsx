@@ -19,7 +19,9 @@ const CheckoutScreen = ({ route, navigation }) => {
 
   const user = useSelector((state) => state.user);
 
-  const { items } = route.params;
+  const { items, reqref } = route.params;
+
+  reqref.current = true;
 
   const [method, setMethod] = useState("cod");
 
@@ -28,7 +30,7 @@ const CheckoutScreen = ({ route, navigation }) => {
       <View
         className={`flex flex-row mx-2 my-1 p-2 border-2 border-palette-yellow`}
       >
-        <Image source={{ uri: item.image }} className={`w-20 h-20`} />
+        <Image source={{ uri: item.images[0] }} className={`w-20 h-20`} />
         <View className={`flex flex-col ml-2`}>
           <Text
             className={`${adaptive.nativeWindText}`}
@@ -177,7 +179,11 @@ const CheckoutScreen = ({ route, navigation }) => {
         </View>
         <TouchableRipple
           onPress={() => {
-            navigation.push("transact", { items: items, method: method });
+            navigation.push("transact", {
+              items: items,
+              method: method,
+              reqref: reqref,
+            });
           }}
           className={`bg-palette-orange3 p-4`}
         >

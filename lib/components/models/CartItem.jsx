@@ -30,7 +30,7 @@ const CartItem = ({ item, onQuantityChange, onPressDeletion }) => {
         size={90}
       />
       <Image
-        source={{ uri: item.image }}
+        source={{ uri: item.images[0] }}
         className={`w-32 h-32 rounded-sm self-center`}
       />
       <View className={`flex flex-col pl-4`}>

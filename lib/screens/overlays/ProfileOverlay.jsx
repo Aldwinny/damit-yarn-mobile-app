@@ -102,7 +102,7 @@ const ProfileOverlay = ({ navigation }) => {
           </Text>
         </View>
 
-        <NavLink
+        {/* <NavLink
           color={adaptive.palettedIconColor}
           nativeWind="ml-3 mt-3"
           textNativeWind="font-bold"
@@ -161,7 +161,7 @@ const ProfileOverlay = ({ navigation }) => {
               />
             }
           />
-        </View>
+        </View> */}
 
         <NavLink
           color={adaptive.palettedIconColor}
@@ -175,31 +175,29 @@ const ProfileOverlay = ({ navigation }) => {
             <FontAwesome5 name="history" size={25} color={adaptive.iconColor} />
           }
           nativeWind={`border-t mt-3`}
-          onPress={() =>
+          onPress={() => {
+            if (user.id === 0) {
+              Alert.alert("Login", "Please log in first!");
+              return;
+            }
             navigation.navigate("categorized", {
               category: "history",
-            })
-          }
+            });
+          }}
         >
           Purchase History
         </IconBarButton>
         <IconBarButton
-          icon={<Ionicons name="eye" size={25} color={adaptive.iconColor} />}
-          onPress={() =>
-            navigation.navigate("categorized", {
-              category: "recent",
-            })
-          }
-        >
-          Recently Viewed
-        </IconBarButton>
-        <IconBarButton
           icon={<AntDesign name="heart" size={25} color={adaptive.iconColor} />}
-          onPress={() =>
+          onPress={() => {
+            if (user.id === 0) {
+              Alert.alert("Login", "Please log in first!");
+              return;
+            }
             navigation.navigate("categorized", {
               category: "liked",
-            })
-          }
+            });
+          }}
         >
           Liked
         </IconBarButton>
