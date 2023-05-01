@@ -69,17 +69,18 @@ const ItemScreen = ({ route, navigation }) => {
   });
 
   const addToCart = () => {
-    console.log("runnign");
     addItemToCart({
       item: item.id,
       user: user.id,
       token: user.token,
     })
       .then((res) => {
-        // console.log(res); // TODO: poerform
+        console.log(res);
+        Alert.alert("Success", "Item successfully added to cart!");
       })
       .catch((err) => {
         console.log(err.response);
+        Alert.alert("Failed", "Item was not added to cart!");
       });
   };
 

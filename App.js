@@ -27,6 +27,8 @@ import DeleteMyAccountScreen from "./lib/screens/ProfileScreens/DeleteMyAccountS
 import UpdateMyAccountScreen from "./lib/screens/ProfileScreens/UpdateMyAccountScreen";
 import ModifyItemScreen from "./lib/screens/ProfileScreens/ModifyItemScreen";
 import { PersistGate } from "redux-persist/integration/react";
+import CheckoutScreen from "./lib/screens/CartScreens/CheckoutScreen";
+import CompleteTransactionScreen from "./lib/screens/CartScreens/CompleteTransactionScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -132,6 +134,20 @@ export default function App() {
                     component={DeliveryDetailsScreen}
                     options={{
                       animation: "slide_from_bottom",
+                    }}
+                  />
+                  <Stack.Screen
+                    name="checkout"
+                    component={CheckoutScreen}
+                    options={{
+                      animation: "fade_from_bottom",
+                    }}
+                  />
+                  <Stack.Screen
+                    name="transact"
+                    component={CompleteTransactionScreen}
+                    options={{
+                      animation: "fade_from_bottom",
                     }}
                   />
                 </Stack.Navigator>
