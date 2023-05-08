@@ -19,6 +19,10 @@ import { useState } from "react";
 import { useRef } from "react";
 import { getItemsFromShop } from "../services/api/items";
 import { RefreshControl } from "react-native";
+import SkeletonLoader from "expo-skeleton-loader";
+import { Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 const ShopScreen = ({ route, navigation }) => {
   const theme = useSelector((state) => state.theme);
@@ -131,9 +135,75 @@ const ShopScreen = ({ route, navigation }) => {
                   />
                 );
               })
+            ) : refreshing ? (
+              <SkeletonLoader
+                className={`flex flex-wrap flex-row mt-2 my-3 w-full items-center justify-center`}
+                boneColor={adaptive.statusbarStartColor}
+              >
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width - 10,
+                    height: width / 2.8,
+                    borderRadius: 5,
+                    padding: 1,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+              </SkeletonLoader>
             ) : (
               <Text className={`${adaptive.nativeWindText} p-7`}>
-                {refreshing ? "Loading.." : "No items found.."}
+                No items found..
               </Text>
             )}
           </View>

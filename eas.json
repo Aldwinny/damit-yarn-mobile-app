@@ -5,7 +5,7 @@
         "buildType": "apk",
         "env": {
           "API_URL": "https://damit-yarn-backend.onrender.com",
-          "API_KEY": "dummyhehe",
+          "API_KEY": "0d29e76e-22e4-4d49-8ed0-8c0ecbb60143",
           "USER_REQ": "/api/v1/users",
           "SHOP_REQ": "/api/v1/shops",
           "ITEM_REQ": "/api/v1/items"
