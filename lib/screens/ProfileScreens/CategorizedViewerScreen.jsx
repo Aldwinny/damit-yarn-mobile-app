@@ -16,6 +16,10 @@ import { getLikes, getTransactions } from "../../services/api/items";
 import { RefreshControl } from "react-native";
 import { useCallback } from "react";
 
+import CatDarkMode from "../../../assets/images/cat-dark-mode.png";
+import CatLightMode from "../../../assets/images/cat-light-mode.png";
+import { Image } from "react-native";
+
 const { width } = Dimensions.get("window");
 
 const CategorizedViewerScreen = ({ route, navigation }) => {
@@ -123,44 +127,59 @@ const CategorizedViewerScreen = ({ route, navigation }) => {
       <View
         className={`${adaptive.nativeWindBackground} flex-1 items-center mt-2`}
       >
-        <FlatList
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-          data={items}
-          renderItem={(item) => {
-            switch (category) {
-              case "liked":
-                return (
-                  <ItemCard
-                    item={item.item}
-                    key={item.id}
-                    borderColor={adaptive.paletteColorOrange}
-                    onPress={() => {
-                      navigation.push("item", {
-                        uid: item.item.id,
-                        item: item.item,
-                      });
-                    }}
-                  />
-                );
-              case "history":
-                return (
-                  <TransactionCard
-                    item={item.item}
-                    key={item.id}
-                    borderColor={adaptive.paletteColorOrange}
-                    onPress={() => {
-                      navigation.push("item", {
-                        uid: item.item.id,
-                        item: item.item,
-                      });
-                    }}
-                  />
-                );
+        {items.length === 0 ? (
+          <View className={`p-3 flex items-center justify-center`}>
+            <Image
+              source={adaptive.from(CatDarkMode, CatLightMode)}
+              className="h-16 w-16"
+              resizeMode="contain"
+            />
+            <Text
+              className={`${adaptive.nativeWindIconColor} text-base text-center`}
+            >
+              No items found.
+            </Text>
+          </View>
+        ) : (
+          <FlatList
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
-          }}
-        />
+            data={items}
+            renderItem={(item) => {
+              switch (category) {
+                case "liked":
+                  return (
+                    <ItemCard
+                      item={item.item}
+                      key={item.id}
+                      borderColor={adaptive.paletteColorOrange}
+                      onPress={() => {
+                        navigation.push("item", {
+                          uid: item.item.id,
+                          item: item.item,
+                        });
+                      }}
+                    />
+                  );
+                case "history":
+                  return (
+                    <TransactionCard
+                      item={item.item}
+                      key={item.id}
+                      borderColor={adaptive.paletteColorOrange}
+                      onPress={() => {
+                        navigation.push("item", {
+                          uid: item.item.id,
+                          item: item.item,
+                        });
+                      }}
+                    />
+                  );
+              }
+            }}
+          />
+        )}
         {/* {placeholderItems.map((item) => {
           return (
             <ItemCard

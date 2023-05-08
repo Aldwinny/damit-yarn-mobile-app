@@ -98,7 +98,10 @@ const ShopScreen = ({ route, navigation }) => {
           </Text>
           {shophint && (
             <Text
-              className={`${adaptive.nativeWindNavText} text-center italic`}
+              className={`${adaptive.from(
+                "text-darkPalette-2",
+                "text-palette-orange3"
+              )} text-center italic`}
             >
               {shophint}
             </Text>
@@ -108,10 +111,8 @@ const ShopScreen = ({ route, navigation }) => {
           >
             {shopdescription}
           </Text>
-          <View className={`${adaptive.nativeWindNavbar} pt-5 mt-5`}>
-            <Text
-              className={`${adaptive.nativeWindText} font-bold text-xl mx-3 mb-3`}
-            >
+          <View className={`${adaptive.nativeWindNavbar} pt-5 mt-5 w-full`}>
+            <Text className={`text-white font-bold text-xl mx-3 mb-3`}>
               SHOP ITEMS:
             </Text>
             {items.current.length !== 0 ? (

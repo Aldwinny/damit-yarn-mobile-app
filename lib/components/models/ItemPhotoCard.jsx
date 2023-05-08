@@ -15,7 +15,7 @@ const ItemPhotoCard = ({ item, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View
-        className={`${adaptive.nativeWindBackground} p-3 my-1 mx-0.5 rounded-md flex flex-column`}
+        className={`${adaptive.nativeWindSoftBackground} p-3 my-1 mx-0.5 rounded-md flex flex-column`}
         style={{
           width: width / 3.2,
           height: width / 2.8,

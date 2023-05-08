@@ -56,7 +56,7 @@ const ProfileOverlay = ({ navigation }) => {
   return (
     <SafeAreaView className={`${profileColor} flex-1`}>
       <ScrollView
-        className={`${adaptive.nativeWindBackground} flex`}
+        className={`${adaptive.nativeWindSoftBackground} flex`}
         contentContainerStyle={{ paddingBottom: 25 }}
       >
         <View className={`${profileColor} flex items-center`}>
@@ -95,7 +95,7 @@ const ProfileOverlay = ({ navigation }) => {
           >
             Hello, {user.token === "" ? "User" : user.username}
           </Text>
-          <Text className={`${adaptive.nativeWindText} text-sm mb-7`}>
+          <Text className={`text-white text-sm mb-7`}>
             {user.token === ""
               ? "Please login to access all features"
               : "Anything you want to do?"}
@@ -172,7 +172,11 @@ const ProfileOverlay = ({ navigation }) => {
         </NavLink>
         <IconBarButton
           icon={
-            <FontAwesome5 name="history" size={25} color={adaptive.iconColor} />
+            <FontAwesome5
+              name="history"
+              size={25}
+              color={adaptive.iconSoftColor}
+            />
           }
           nativeWind={`border-t mt-3`}
           onPress={() => {
@@ -188,7 +192,9 @@ const ProfileOverlay = ({ navigation }) => {
           Purchase History
         </IconBarButton>
         <IconBarButton
-          icon={<AntDesign name="heart" size={25} color={adaptive.iconColor} />}
+          icon={
+            <AntDesign name="heart" size={25} color={adaptive.iconSoftColor} />
+          }
           onPress={() => {
             if (user.id === 0) {
               Alert.alert("Login", "Please log in first!");
@@ -212,7 +218,11 @@ const ProfileOverlay = ({ navigation }) => {
             </NavLink>
             <IconBarButton
               icon={
-                <AntDesign name="login" size={25} color={adaptive.iconColor} />
+                <AntDesign
+                  name="login"
+                  size={25}
+                  color={adaptive.iconSoftColor}
+                />
               }
               nativeWind={"border-t mt-3"}
               onPress={() => navigation.navigate("modifyitem")}
@@ -234,7 +244,11 @@ const ProfileOverlay = ({ navigation }) => {
         {user.token === "" ? (
           <IconBarButton
             icon={
-              <AntDesign name="login" size={25} color={adaptive.iconColor} />
+              <AntDesign
+                name="login"
+                size={25}
+                color={adaptive.iconSoftColor}
+              />
             }
             nativeWind={"border-t mt-3"}
             onPress={() => navigation.navigate("login")}
@@ -247,7 +261,7 @@ const ProfileOverlay = ({ navigation }) => {
               <MaterialIcons
                 name="account-circle"
                 size={25}
-                color={adaptive.iconColor}
+                color={adaptive.iconSoftColor}
               />
             }
             nativeWind={`border-t ${user.token === "" ? "" : "mt-3"}`}
@@ -258,14 +272,14 @@ const ProfileOverlay = ({ navigation }) => {
         )}
 
         <IconBarButton
-          color={adaptive.iconColor}
+          color={adaptive.iconSoftColor}
           onPress={() => navigation.navigate("faq")}
         >
           Frequently Asked Questions
         </IconBarButton>
         <IconBarButton
           icon={
-            <FontAwesome5 name="dev" size={25} color={adaptive.iconColor} />
+            <FontAwesome5 name="dev" size={25} color={adaptive.iconSoftColor} />
           }
           onPress={() => navigation.navigate("about")}
         >
@@ -274,7 +288,11 @@ const ProfileOverlay = ({ navigation }) => {
         {user.token !== "" ? (
           <IconBarButton
             icon={
-              <AntDesign name="logout" size={25} color={adaptive.iconColor} />
+              <AntDesign
+                name="logout"
+                size={25}
+                color={adaptive.iconSoftColor}
+              />
             }
             nativeWind={"border-y"}
             onPress={removeAccount}

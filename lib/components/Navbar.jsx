@@ -53,7 +53,7 @@ const Navbar = ({
       )}
       {title !== undefined ? (
         <Text
-          className={`${adaptive.nativeWindText} font-bold text-xl mx-auto absolute top-5 left-0 right-0 text-center -z-10`}
+          className={`${adaptive.nativeWindNavText} font-bold text-xl mx-auto absolute top-5 left-0 right-0 text-center -z-10`}
         >
           {title}
         </Text>

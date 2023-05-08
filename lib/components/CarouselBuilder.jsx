@@ -41,14 +41,19 @@ const CarouselBuilder = ({ items }) => {
                 resizeMode="cover"
                 style={{ flex: 1 }}
               >
-                <View className="flex-1 bg-overlay-blackStrong">
+                <View
+                  className={`flex-1 ${adaptive.from(
+                    "bg-overlay-blackStrong",
+                    ""
+                  )}`}
+                >
                   <Text
-                    className={`${adaptive.nativeWindActiveNavText} font-bold mt-auto ml-3 text-left text-lg`}
+                    className={`${adaptive.nativeWindCarouselTitle} font-bold mt-auto ml-3 text-left text-lg`}
                   >
                     {item.title}
                   </Text>
                   <Text
-                    className={`${adaptive.nativeWindNavText} text-left mb-5 ml-3`}
+                    className={`${adaptive.nativeWindCarouselSubtitle} text-left mb-5 ml-3`}
                   >
                     {item.description}
                   </Text>

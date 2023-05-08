@@ -24,6 +24,8 @@ import ItemCard from "../../components/models/ItemCard";
 import { useSelector } from "react-redux";
 import { RefreshControl } from "react-native";
 import { getAllItems } from "../../services/api/items";
+import { Dimensions } from "react-native";
+import SkeletonLoader from "expo-skeleton-loader";
 
 const featuredItems = [
   {
@@ -42,6 +44,8 @@ const featuredItems = [
     description: "I also don't know what to put in here!",
   },
 ];
+
+const { width } = Dimensions.get("window");
 
 const HomeOverlay = ({ navigation }) => {
   const theme = useSelector((state) => state.theme);
@@ -126,7 +130,7 @@ const HomeOverlay = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.push("notifications");
+            // navigation.push("notifications");
           }}
           className={`${adaptive.nativeWindText} mx-3`}
         >
@@ -146,7 +150,7 @@ const HomeOverlay = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <ScrollView
-        className={`${adaptive.nativeWindBackground} h-full`}
+        className={`${adaptive.nativeWindSoftBackground} h-full`}
         contentContainerStyle={{ paddingBottom: 100 }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -159,49 +163,184 @@ const HomeOverlay = ({ navigation }) => {
             onPress={() => {
               navigation.navigate("TrendingOverlay");
             }}
-            color={adaptive.paletteColorOrange}
+            color={adaptive.APaletteColorOrange}
             nativeWind="ml-3 mt-3"
           >
             Trending
           </NavLink>
           <View className="flex flex-wrap flex-row mt-2 my-3 w-full items-center justify-center">
-            {trendingItems !== undefined
-              ? trendingItems.slice(0, 6).map((item) => {
-                  return (
-                    <ItemPhotoCard
-                      key={item.id}
-                      item={item}
-                      onPress={() =>
-                        navigation.push("item", { uid: item.id, item: item })
-                      }
-                    />
-                  );
-                })
-              : ""}
+            {trendingItems !== undefined ? (
+              trendingItems.slice(0, 6).map((item) => {
+                return (
+                  <ItemPhotoCard
+                    key={item.id}
+                    item={item}
+                    onPress={() =>
+                      navigation.push("item", { uid: item.id, item: item })
+                    }
+                  />
+                );
+              })
+            ) : (
+              <SkeletonLoader
+                className={`flex flex-wrap flex-row mt-2 my-3 w-full items-center justify-center`}
+                boneColor={adaptive.statusbarStartColor}
+              >
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+                <SkeletonLoader.Item
+                  style={{
+                    width: width / 3.2,
+                    height: width / 2.8,
+                    borderRadius: 10,
+                    padding: 3,
+                    marginHorizontal: 2,
+                    marginVertical: 3,
+                  }}
+                />
+              </SkeletonLoader>
+            )}
           </View>
 
           <View className={`${adaptive.nativeWindBackground} flex-1 mt-3`}>
-            <NavLink color={adaptive.paletteColorYellow} nativeWind="ml-3 mt-3">
+            <NavLink
+              color={adaptive.APaletteColorYellow}
+              nativeWind="ml-3 mt-3"
+            >
               More Products
             </NavLink>
             <View
               className={`flex mt-2 my-3 w-full items-center justify-center`}
             >
               {/* TODO: Edit the following to be an actual card */}
-              {items.current !== undefined
-                ? items.current.map((item) => {
-                    return (
-                      <ItemCard
-                        item={item}
-                        id={item.id}
-                        key={item.id}
-                        onPress={() =>
-                          navigation.push("item", { uid: item.id, item: item })
-                        }
-                      />
-                    );
-                  })
-                : ""}
+              {items.current !== undefined ? (
+                items.current.map((item) => {
+                  return (
+                    <ItemCard
+                      item={item}
+                      id={item.id}
+                      key={item.id}
+                      onPress={() =>
+                        navigation.push("item", { uid: item.id, item: item })
+                      }
+                    />
+                  );
+                })
+              ) : (
+                <SkeletonLoader
+                  className={`flex flex-wrap flex-row mt-2 my-3 w-full items-center justify-center`}
+                  boneColor={adaptive.statusbarStartColor}
+                >
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                  <SkeletonLoader.Item
+                    style={{
+                      width: width - 10,
+                      height: width / 2.8,
+                      borderRadius: 5,
+                      padding: 1,
+                      marginHorizontal: 2,
+                      marginVertical: 3,
+                    }}
+                  />
+                </SkeletonLoader>
+              )}
             </View>
           </View>
         </View>

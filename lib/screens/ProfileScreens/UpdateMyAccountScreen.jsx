@@ -203,7 +203,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
           />
 
           <Text
-            className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
+            className={`text-palette-orange2 mx-4 mt-6 mb-2 font-bold text-lg text-center`}
           >
             User Information
           </Text>
@@ -243,7 +243,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={320}
               className={`${
                 inputErrors[0][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={(_) => setFirstName(_)}
               value={firstName}
@@ -269,7 +269,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={320}
               className={`${
                 inputErrors[1][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={(_) => setMiddleName(_)}
               value={middleName}
@@ -295,7 +295,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={320}
               className={`${
                 inputErrors[2][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={(_) => setLastName(_)}
               value={lastName}
@@ -314,7 +314,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
             >
               Contact Number*
             </Text>
-            <View className={`flex flex-row border-2`}>
+            <View className={`flex flex-row`}>
               <TouchableRipple
                 onPress={() => setShowCountries(true)}
                 rippleColor="rgba(0,0,0,0.5)"
@@ -322,7 +322,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
                   inputErrors[3][0]
                     ? "text-red-600 border-2 border-red-600"
                     : ""
-                } bg-white rounded-l-full mr-2 h-11 w-28 p-2 px-3`}
+                } bg-darkPalette-1 rounded-l-full mr-2 h-11 w-28 p-2 px-3`}
                 borderless
               >
                 <View className={`flex flex-row items-center`}>
@@ -343,7 +343,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
                   inputErrors[3][0]
                     ? "text-red-600 border-2 border-red-600"
                     : ""
-                } bg-white p-2 px-3 rounded-r-full flex-1`}
+                } bg-darkPalette-1 p-2 px-3 rounded-r-full flex-1`}
                 cursorColor={adaptive.paletteColorOrange}
                 keyboardType="numeric"
                 onChangeText={setContactNum}
@@ -366,7 +366,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={320}
               className={`${
                 inputErrors[4][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={setZip}
               value={zip}
@@ -387,7 +387,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={25}
               className={`${
                 inputErrors[5][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={setStreet}
               value={street}
@@ -407,7 +407,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={25}
               className={`${
                 inputErrors[6][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={setCity}
               value={city}
@@ -427,7 +427,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
               maxLength={25}
               className={`${
                 inputErrors[7][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-full`}
+              } bg-darkPalette-1 p-2 px-3 rounded-full`}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={setCountry}
               value={country}
@@ -447,7 +447,7 @@ const UpdateMyAccountScreen = ({ navigation }) => {
             <TextInput
               placeholder="Enter your password"
               maxLength={100}
-              className={`bg-white p-2 px-3 rounded-full`}
+              className={`bg-darkPalette-1 p-2 px-3 rounded-full`}
               selectionColor={"red"}
               cursorColor={adaptive.paletteColorOrange}
               onChangeText={(_) => setPassword(_)}

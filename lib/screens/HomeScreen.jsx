@@ -96,7 +96,10 @@ const HomeScreen = () => {
           }}
         />
       </Tab.Navigator>
-      <StatusBar style={adaptive.from("light", "dark")} />
+      <StatusBar
+        backgroundColor={adaptive.statusbarHomeColor}
+        style={adaptive.from("light", "dark")}
+      />
     </>
   );
 };

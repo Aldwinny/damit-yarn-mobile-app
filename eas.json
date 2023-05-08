@@ -2,7 +2,14 @@
   "build": {
     "preview": {
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "env": {
+          "API_URL": "https://damit-yarn-backend.onrender.com",
+          "API_KEY": "dummyhehe",
+          "USER_REQ": "/api/v1/users",
+          "SHOP_REQ": "/api/v1/shops",
+          "ITEM_REQ": "/api/v1/items"
+        }
       }
     },
     "preview2": {

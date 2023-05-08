@@ -35,7 +35,10 @@ const AboutScreen = ({ navigation }) => {
         <Text
           className={`${
             onPress !== undefined
-              ? adaptive.nativeWindActiveNavText
+              ? adaptive.from(
+                  "text-palette-orange1 font-bold",
+                  "text-blue-500 font-bold"
+                )
               : adaptive.nativeWindText
           } ${onPress !== undefined ? "underline" : ""} text-base mx-6 my-1`}
           onPress={onPress}

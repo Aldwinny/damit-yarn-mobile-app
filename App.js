@@ -35,7 +35,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   global.debug = true;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
-  global.debugOverlayScreen = "ProfileOverlay";
+  global.debugOverlayScreen = "HomeOverlay";
   global.scheme = "dark";
 
   return (

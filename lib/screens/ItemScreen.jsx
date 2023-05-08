@@ -130,7 +130,7 @@ const ItemScreen = ({ route, navigation }) => {
         }}
       />
       <ScrollView
-        className={`${adaptive.nativeWindBackground} flex`}
+        className={`${adaptive.nativeWindSoftBackground} flex`}
         contentContainerStyle={{ paddingBottom: 25 }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -145,7 +145,7 @@ const ItemScreen = ({ route, navigation }) => {
           >
             {item.name}
           </Text>
-          <Text className={`${adaptive.nativeWindActiveNavText} text-base`}>
+          <Text className={`text-palette-orange2 font-bold text-base`}>
             {formatCurrency(item.price)}
           </Text>
           <View className="flex flex-row mt-4">
@@ -192,15 +192,11 @@ const ItemScreen = ({ route, navigation }) => {
               />
             </TouchableRipple>
           </View>
-          <Text
-            className={`${adaptive.nativeWindActiveNavText} mt-4 font-bold text-lg`}
-          >
+          <Text className={`text-palette-orange2 font-bold mt-4 text-lg`}>
             Keywords
           </Text>
           <KeywordBuilder keywords={item.keywords} />
-          <Text
-            className={`${adaptive.nativeWindActiveNavText} mt-4 font-bold text-lg`}
-          >
+          <Text className={`text-palette-orange2 font-bold mt-4 text-lg`}>
             Description
           </Text>
           <Text className={`${adaptive.nativeWindText} text-base mt-2`}>
@@ -254,15 +250,13 @@ const ItemScreen = ({ route, navigation }) => {
                   color={adaptive.paletteColorYellow}
                 />
                 <Text
-                  className={`${adaptive.nativeWindIconColor} font-bold text-xs ml-1`}
+                  className={`${adaptive.nativeWindNavText} font-bold text-xs ml-1`}
                 >
                   {item.location}
                 </Text>
               </View>
               {item.shophint && (
-                <Text
-                  className={`${adaptive.nativeWindIconColor} text-xs mt-1`}
-                >
+                <Text className={`${adaptive.nativeWindNavText} text-xs mt-1`}>
                   {item.shophint}
                 </Text>
               )}
@@ -270,7 +264,7 @@ const ItemScreen = ({ route, navigation }) => {
           </View>
         </TouchableRipple>
         <Text
-          className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg`}
+          className={`text-palette-orange2 font-bold mx-4 mt-6 mb-2 text-lg`}
         >
           Reviews
         </Text>
@@ -279,13 +273,11 @@ const ItemScreen = ({ route, navigation }) => {
             className={`${adaptive.nativeWindNavbar} p-3 flex items-center justify-center`}
           >
             <Image
-              source={theme.theme === "dark" ? catDarkMode : catLightMode}
+              source={catDarkMode}
               className="h-16 w-16"
               resizeMode="contain"
             />
-            <Text
-              className={`${adaptive.nativeWindIconColor} text-base text-center`}
-            >
+            <Text className={`text-darkPalette-1 text-base text-center`}>
               This item has no reviews..
             </Text>
           </View>
@@ -344,12 +336,10 @@ const ItemScreen = ({ route, navigation }) => {
             <Ionicons
               name="chatbubble-ellipses"
               size={25}
-              color={adaptive.textColor}
+              color={"white"}
               style={{ marginRight: 10 }}
             />
-            <Text
-              className={`${adaptive.nativeWindText} font-bold text-center align-center`}
-            >
+            <Text className={`text-white font-bold text-center align-center`}>
               Chat Now?
             </Text>
           </View>
@@ -369,12 +359,10 @@ const ItemScreen = ({ route, navigation }) => {
             <Ionicons
               name="cart"
               size={25}
-              color={adaptive.textColor}
+              color={"white"}
               style={{ marginRight: 10 }}
             />
-            <Text
-              className={`${adaptive.nativeWindText} font-bold text-center align-center`}
-            >
+            <Text className={`text-white font-bold text-center align-center`}>
               Add to cart
             </Text>
           </View>

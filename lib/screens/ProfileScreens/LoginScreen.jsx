@@ -115,7 +115,7 @@ const LoginScreen = ({ navigation }) => {
       >
         <Image source={YarnImage} className={`h-36 w-36 mt-5 self-center`} />
         <Text
-          className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
+          className={`text-palette-orange2 mx-4 mt-6 mb-2 font-bold text-lg text-center`}
         >
           Welcome back, yarn!
         </Text>
@@ -140,7 +140,7 @@ const LoginScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[0][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setEmail}
             value={email}
@@ -160,7 +160,7 @@ const LoginScreen = ({ navigation }) => {
             maxLength={100}
             className={`${
               inputErrors[1][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             selectionColor={"red"}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setPassword}
@@ -194,7 +194,7 @@ const LoginScreen = ({ navigation }) => {
           >
             <View className={``}>
               <Text
-                className={`${adaptive.nativeWindText} text-base py-4 p-2 text-center font-bold`}
+                className={`text-white text-base py-4 p-2 text-center font-bold`}
               >
                 Login
               </Text>
@@ -204,7 +204,7 @@ const LoginScreen = ({ navigation }) => {
           <Text className={`${adaptive.nativeWindText} text-base mt-2 ml-3`}>
             If you want to sign up,{" "}
             <Text
-              className={`${adaptive.nativeWindButtonText}`}
+              className={`text-palette-orange2 font-bold`}
               onPress={() => {
                 navigation.replace("register");
               }}

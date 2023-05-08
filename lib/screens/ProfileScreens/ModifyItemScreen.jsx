@@ -418,7 +418,7 @@ const ModifyItemScreen = ({ navigation }) => {
               <TextInput
                 className={`${
                   inputErrors[1][0] && "text-red-600 border-2 border-red-600"
-                } bg-white rounded-full mb-3 p-2`}
+                } bg-darkPalette-1 rounded-full mb-3 p-2`}
                 placeholder="Add the name of your item"
                 maxLength={30}
                 onChangeText={setName}
@@ -436,7 +436,7 @@ const ModifyItemScreen = ({ navigation }) => {
               <TextInput
                 className={`${
                   inputErrors[2][0] && "text-red-600 border-2 border-red-600"
-                } bg-white rounded-full mb-3 p-2`}
+                } bg-darkPalette-1 rounded-full mb-3 p-2`}
                 placeholder="Add the description of your item"
                 maxLength={999}
                 onChangeText={setDescription}
@@ -454,7 +454,7 @@ const ModifyItemScreen = ({ navigation }) => {
               <TextInput
                 className={`${
                   inputErrors[3][0] && "text-red-600 border-2 border-red-600"
-                } bg-white rounded-full mb-3 p-2`}
+                } bg-darkPalette-1 rounded-full mb-3 p-2`}
                 keyboardType="numeric"
                 placeholder="Price your item"
                 onChangeText={setPrice}
@@ -476,7 +476,7 @@ const ModifyItemScreen = ({ navigation }) => {
               <TextInput
                 className={`${
                   inputErrors[4][0] && "text-red-600 border-2 border-red-600"
-                } bg-white rounded-full mb-3 p-2`}
+                } bg-darkPalette-1 rounded-full mb-3 p-2`}
                 placeholder="Separate keywords with a space"
                 onChangeText={setKeywords}
                 value={keywords}
@@ -524,7 +524,7 @@ const ModifyItemScreen = ({ navigation }) => {
                     labelField={"name"}
                     valueField={"id"}
                     placeholder="Select an item for editing"
-                    className={`bg-white border-2 border-solid mx-3 px-2`}
+                    className={`bg-darkPalette-1 border-2 border-solid mx-3 px-2`}
                     search
                     searchPlaceholder="Search an item.."
                     value={currentItem}
@@ -607,7 +607,7 @@ const ModifyItemScreen = ({ navigation }) => {
                           className={`${
                             inputErrors[1][0] &&
                             "text-red-600 border-2 border-red-600"
-                          } bg-white rounded-full mb-3 p-2`}
+                          } bg-darkPalette-1 rounded-full mb-3 p-2`}
                           placeholder="Add the name of your item"
                           maxLength={30}
                           onChangeText={setName}
@@ -628,7 +628,7 @@ const ModifyItemScreen = ({ navigation }) => {
                           className={`${
                             inputErrors[2][0] &&
                             "text-red-600 border-2 border-red-600"
-                          } bg-white rounded-full mb-3 p-2`}
+                          } bg-darkPalette-1 rounded-full mb-3 p-2`}
                           placeholder="Add the description of your item"
                           maxLength={999}
                           onChangeText={setDescription}
@@ -649,7 +649,7 @@ const ModifyItemScreen = ({ navigation }) => {
                           className={`${
                             inputErrors[3][0] &&
                             "text-red-600 border-2 border-red-600"
-                          } bg-white rounded-full mb-3 p-2`}
+                          } bg-darkPalette-1 rounded-full mb-3 p-2`}
                           keyboardType="numeric"
                           placeholder="Price your item"
                           onChangeText={setPrice}
@@ -677,7 +677,7 @@ const ModifyItemScreen = ({ navigation }) => {
                           className={`${
                             inputErrors[4][0] &&
                             "text-red-600 border-2 border-red-600"
-                          } bg-white rounded-full mb-3 p-2`}
+                          } bg-darkPalette-1 rounded-full mb-3 p-2`}
                           placeholder="Separate keywords with a space"
                           onChangeText={setKeywords}
                           value={keywords}

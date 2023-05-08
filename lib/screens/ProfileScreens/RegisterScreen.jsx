@@ -174,7 +174,7 @@ const RegisterScreen = ({ navigation }) => {
       >
         <Image source={YarnImage} className={`h-36 w-36 mt-5 self-center`} />
         <Text
-          className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
+          className={`text-palette-orange2 mx-4 mt-6 mb-2 font-bold text-lg text-center`}
         >
           Would you like to create your own shop?
         </Text>
@@ -215,7 +215,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             placeholder="Enter your shop name"
             maxLength={320}
-            className={`${hasShop ? "bg-white" : "bg-darkPalette-2"} ${
+            className={`${hasShop ? "bg-darkPalette-1" : "bg-darkPalette-2"} ${
               hasShop && inputErrors[0][0]
                 ? "text-red-600 border-2 border-red-600"
                 : ""
@@ -238,7 +238,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             placeholder="Enter your shop description"
             maxLength={320}
-            className={`${hasShop ? "bg-white" : "bg-darkPalette-2"} ${
+            className={`${hasShop ? "bg-darkPalette-1" : "bg-darkPalette-2"} ${
               hasShop && inputErrors[1][0]
                 ? "text-red-600 border-2 border-red-600"
                 : ""
@@ -261,7 +261,7 @@ const RegisterScreen = ({ navigation }) => {
           <TextInput
             placeholder="Describe your shop in less than 10 words"
             maxLength={320}
-            className={`${hasShop ? "bg-white" : "bg-darkPalette-2"} ${
+            className={`${hasShop ? "bg-darkPalette-1" : "bg-darkPalette-2"} ${
               hasShop && inputErrors[2][0]
                 ? "text-red-600 border-2 border-red-600"
                 : ""
@@ -414,7 +414,7 @@ const RegisterScreen = ({ navigation }) => {
       >
         <Image source={YarnImage} className={`h-36 w-36 mt-5 self-center`} />
         <Text
-          className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
+          className={`text-palette-orange2 mx-4 mt-6 mb-2 font-bold text-lg text-center`}
         >
           Contact Information
         </Text>
@@ -426,13 +426,13 @@ const RegisterScreen = ({ navigation }) => {
           >
             Contact Number*
           </Text>
-          <View className={`flex flex-row border-2`}>
+          <View className={`flex flex-row`}>
             <TouchableRipple
               onPress={() => setShowCountries(true)}
               rippleColor="rgba(0,0,0,0.5)"
               className={`${
                 inputErrors[0][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white rounded-l-full mr-2 h-11 w-28 p-2 px-3`}
+              } bg-darkPalette-1 rounded-l-full mr-2 h-11 w-28 p-2 px-3`}
               borderless
             >
               <View className={`flex flex-row items-center`}>
@@ -451,7 +451,7 @@ const RegisterScreen = ({ navigation }) => {
               maxLength={320}
               className={`${
                 inputErrors[0][0] ? "text-red-600 border-2 border-red-600" : ""
-              } bg-white p-2 px-3 rounded-r-full flex-1`}
+              } bg-darkPalette-1 p-2 px-3 rounded-r-full flex-1`}
               cursorColor={adaptive.paletteColorOrange}
               keyboardType="numeric"
               onChangeText={setContactNum}
@@ -474,7 +474,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[1][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setZip}
             value={zip}
@@ -495,7 +495,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={25}
             className={`${
               inputErrors[2][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setStreet}
             value={street}
@@ -515,7 +515,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={25}
             className={`${
               inputErrors[3][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setCity}
             value={city}
@@ -535,7 +535,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={25}
             className={`${
               inputErrors[4][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setCountry}
             value={country}
@@ -704,7 +704,7 @@ const RegisterScreen = ({ navigation }) => {
       >
         <Image source={YarnImage} className={`h-36 w-36 mt-5 self-center`} />
         <Text
-          className={`${adaptive.nativeWindActiveNavText} mx-4 mt-6 mb-2 font-bold text-lg text-center`}
+          className={`text-palette-orange2 mx-4 mt-6 mb-2 font-bold text-lg text-center`}
         >
           Personal Information
         </Text>
@@ -733,7 +733,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[0][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setEmail(_)}
             value={email}
@@ -759,7 +759,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[1][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setFirstName(_)}
             value={firstName}
@@ -785,7 +785,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[2][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setMiddleName(_)}
             value={middleName}
@@ -811,7 +811,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={320}
             className={`${
               inputErrors[3][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setLastName(_)}
             value={lastName}
@@ -837,7 +837,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={25}
             className={`${
               inputErrors[4][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setUsername(_)}
             value={username}
@@ -863,7 +863,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={100}
             className={`${
               inputErrors[5][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             selectionColor={"red"}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={(_) => setPassword(_)}
@@ -872,7 +872,7 @@ const RegisterScreen = ({ navigation }) => {
             autoComplete="password"
             onEndEditing={validate}
           />
-          <Text className={`text-darkPalette-2 mt-1`}>
+          <Text className={`${adaptive.nativeWindSoftText} mt-1`}>
             * Password must contain 8 or more characters with at least 1 small
             letter, 1 capital letter, 1 number, and 1 special symbol.
           </Text>
@@ -895,7 +895,7 @@ const RegisterScreen = ({ navigation }) => {
             maxLength={100}
             className={`${
               inputErrors[6][0] ? "text-red-600 border-2 border-red-600" : ""
-            } bg-white p-2 px-3 rounded-full`}
+            } bg-darkPalette-1 p-2 px-3 rounded-full`}
             selectionColor={"red"}
             cursorColor={adaptive.paletteColorOrange}
             onChangeText={setConfirmPass}

@@ -67,23 +67,17 @@ const CreateAccountScreen = ({ route, navigation }) => {
             source={YarnImage}
             resizeMode="contain"
           />
-          <Text
-            className={`${adaptive.nativeWindText} text-lg text-center mx-10`}
-          >
+          <Text className={`text-white text-lg text-center mx-10`}>
             Account created successfully!
           </Text>
-          <Text
-            className={`${adaptive.nativeWindText} text-base text-center mt-5 mx-3`}
-          >
+          <Text className={`text-white text-base text-center mt-5 mx-3`}>
             You are now ready to purchase handmade products through Damit Yarn!
           </Text>
           <TouchableRipple
             onPress={() => navigation.popToTop()}
             className="bg-palette-orange2 p-4 m-4 mt-24 px-14 rounded-full flex flex-row"
           >
-            <Text className={`${adaptive.nativeWindText} font-bold text-xl`}>
-              Continue
-            </Text>
+            <Text className={`text-white font-bold text-xl`}>Continue</Text>
           </TouchableRipple>
         </>
       );

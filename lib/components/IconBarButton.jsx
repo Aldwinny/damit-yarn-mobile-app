@@ -20,11 +20,11 @@ const IconBarButton = ({ icon, onPress, children, nativeWind }) => {
           <AntDesign
             name="questioncircle"
             size={25}
-            color={adaptive.iconColor}
+            color={adaptive.iconSoftColor}
           />
         )}
         <Text
-          className={`${adaptive.nativeWindNavText} flex-1 ml-4 font-bold text-lg`}
+          className={`${adaptive.nativeWindSoftText} flex-1 ml-4 font-bold text-lg`}
         >
           {children ?? "No Label"}
         </Text>

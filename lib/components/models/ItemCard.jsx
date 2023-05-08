@@ -42,7 +42,7 @@ const ItemCard = ({
         />
         <View className="flex-1 flex-col ml-2 w-full">
           <Text
-            className={`${adaptive.nativeWindText} font-bold mb-1`}
+            className={`text-white font-bold mb-1`}
             ellipsizeMode="tail"
             numberOfLines={1}
           >
@@ -51,7 +51,7 @@ const ItemCard = ({
           <Text
             className={`text-base font-bold mb-auto`}
             style={{
-              color: textColor,
+              color: adaptive.from(textColor, "#FFF"),
             }}
           >
             {formatCurrency(item.price)}
@@ -66,7 +66,7 @@ const ItemCard = ({
                 marginRight: 3,
               }}
             />
-            <Text className={`${adaptive.nativeWindText}`}>
+            <Text className={`text-white`}>
               {item.stars.toFixed(1)} · {item.shopname}
             </Text>
           </View>
@@ -80,7 +80,7 @@ const ItemCard = ({
                 marginRight: 3,
               }}
             />
-            <Text className={`${adaptive.nativeWindText}`}>
+            <Text className={`text-white`}>
               {numberCompactor(item.sold)} sold
             </Text>
           </View>
@@ -94,9 +94,7 @@ const ItemCard = ({
                 marginRight: 3,
               }}
             />
-            <Text className={`${adaptive.nativeWindText}`}>
-              {item.location}
-            </Text>
+            <Text className={`text-white`}>{item.location}</Text>
           </View>
         </View>
       </View>
