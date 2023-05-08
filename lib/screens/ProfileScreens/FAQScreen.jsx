@@ -20,34 +20,64 @@ const FAQScreen = ({ navigation }) => {
         title="FAQ"
       />
       <ScrollView
-        className={`${adaptive.nativeWindBackground} flex`}
+        className={`${adaptive.nativeWindSoftBackground} flex`}
         contentContainerStyle={{ paddingBottom: 25 }}
       >
         <List.AccordionGroup>
           <List.Accordion
-            title="Why are there no questions in the FAQ yet?"
+            title="What is Damit Yarn?"
             id="1"
-            className={`${adaptive.nativeWindBackground} border-y-2`}
+            className={`${adaptive.nativeWindBackground} border-2`}
             titleStyle={{
               color: adaptive.palettedIconColor,
             }}
           >
             <List.Item
-              title="We're still working on it. This will be dependent from the web database."
+              title="Damit yarn is a platform that allows users to buy and sell clothing and accessories. We offer a convenient mobile app to do all of that in one place."
+              titleStyle={{
+                color: adaptive.textColor,
+              }}
+              titleNumberOfLines={10}
+            />
+          </List.Accordion>
+          <List.Accordion
+            title="How does Damit Yarn earn revenue?"
+            id="2"
+            className={`${adaptive.nativeWindBackground} border-2`}
+            titleStyle={{
+              color: adaptive.palettedIconColor,
+            }}
+          >
+            <List.Item
+              title="Damit Yarn earns money through advertisements hosted in our application. We also have a shop of our own where we sell our stuff."
               titleStyle={{ color: adaptive.textColor }}
               titleNumberOfLines={10}
             />
           </List.Accordion>
           <List.Accordion
-            title="Why are there no questions in the FAQ yet?"
-            id="2"
-            className={`${adaptive.nativeWindBackground}  border-y-2`}
+            title="What technology does Damit Yarn use?"
+            id="3"
+            className={`${adaptive.nativeWindBackground} border-2`}
             titleStyle={{
               color: adaptive.palettedIconColor,
             }}
           >
             <List.Item
-              title="We're still working on it. This will be dependent from the web database."
+              title="React Native & Expo for frontend, NodeJS and ExpressJS for backend, PostgreSQL for database, and Cloudinary for Content Management System."
+              titleStyle={{ color: adaptive.textColor }}
+              titleNumberOfLines={10}
+            />
+          </List.Accordion>
+          <List.Accordion
+            title="Is Damit Yarn a real company?"
+            id="4"
+            className={`${adaptive.nativeWindBackground} border-2`}
+            titleStyle={{
+              color: adaptive.palettedIconColor,
+            }}
+          >
+            <List.Item
+              title="No. Damit Yarn is not a real company."
               titleStyle={{ color: adaptive.textColor }}
               titleNumberOfLines={10}
             />
