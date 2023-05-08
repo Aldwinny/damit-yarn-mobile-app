@@ -4,13 +4,13 @@ import React, { useEffect } from "react";
 import logo from "../../assets/logo/DamitYarn.png";
 import AdaptiveScheme from "../shared/Adaptive";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFirstOpen, toggleFirstOpen } from "../shared/redux/settingSlice";
+import { toggleFirstOpen } from "../shared/redux/settingSlice";
 import { StatusBar } from "expo-status-bar";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      dispatch(resetFirstOpen());
+      dispatch(toggleFirstOpen());
       if (settings.firstOpen) {
         navigation.replace("getting-started");
         return;
