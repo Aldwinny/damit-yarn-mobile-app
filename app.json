@@ -11,10 +11,6 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/logo/DamitYarnLogo.png",
-        "backgroundColor": "#ffffff"
-      },
       "package": "io.github.aldwinny.damityarn"
     },
     "web": {

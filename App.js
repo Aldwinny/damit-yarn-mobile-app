@@ -33,7 +33,7 @@ import CompleteTransactionScreen from "./lib/screens/CartScreens/CompleteTransac
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  global.debug = true;
+  global.debug = false;
   global.debugCurrentScreen = "home"; // Set this to change which first screen to be landed on
   global.debugOverlayScreen = "HomeOverlay";
   global.scheme = "dark";
