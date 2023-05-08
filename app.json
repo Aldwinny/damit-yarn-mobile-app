@@ -4,7 +4,7 @@
     "slug": "damitYarnMobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo/DamitYarn.png",
+    "icon": "./assets/logo/DamitYarnLogo.png",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -12,7 +12,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo/DamitYarn.png",
+        "foregroundImage": "./assets/logo/DamitYarnLogo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "io.github.aldwinny.damityarn"
