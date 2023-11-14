@@ -16,6 +16,8 @@ Primarily built with React Native and Expo, this mobile application also uses a 
 - Bcrypt
 - React Navigation
 
+The express js backend implementation can be found [here!](https://github.com/aldwinny/Damit-yarn-backend)
+
 ## Building
 
 After installing the packages, and resolving the .env file, the application is built by calling on <code>npm run build</code> which uses eas-cli to create an Android build of the application.
