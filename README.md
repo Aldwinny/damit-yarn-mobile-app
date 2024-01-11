@@ -28,14 +28,25 @@ After installing the packages, and resolving the .env file, the application is b
 
 <table>
     <tr>
-        <td><img src="https://drive.google.com/uc?id=1Tg_7J6xgh-CzjtmR7xT_NxUU-E7CKqSC" alt="Home Page" height="250"></td>
-        <td><img src="https://drive.google.com/uc?id=1O5VhU3qijKFPAbUZ1_mIAjMXhZpC3R2x" alt="Trending Page" height="250"></td>
+        <td align="center"><b>Home</b></td>
+        <td align="center"><b>Trending</b></td>
     </tr>
     <tr>
-        <td><img src="https://drive.google.com/uc?id=1tk7Uj1Svkrd53ydOvRUjliv8NqdqwONP" alt="Cart Page" height="250"></td>
-        <td><img src="https://drive.google.com/uc?id=1Xe9mYiRpK_IKc07qnhR4HQ4XBP9-lTqP" alt="Profile Page" height="250"></td>
+        <td><img src="https://drive.google.com/uc?id=1Tg_7J6xgh-CzjtmR7xT_NxUU-E7CKqSC" alt="Home Page" height="300"></td>
+        <td><img src="https://drive.google.com/uc?id=1O5VhU3qijKFPAbUZ1_mIAjMXhZpC3R2x" alt="Trending Page" height="300"></td>
     </tr>
     <tr>
-        <td><img src="https://drive.google.com/uc?id=1bNoAn2FhjlY8IOUHs75sXi8NM-_w3IFk" alt="Shop Page" height="250"></td>
+        <td align="center"><b>Cart</b></td>
+        <td align="center"><b>Profile</b></td>
+    </tr>
+    <tr>
+        <td><img src="https://drive.google.com/uc?id=1tk7Uj1Svkrd53ydOvRUjliv8NqdqwONP" alt="Cart Page" height="300"></td>
+        <td><img src="https://drive.google.com/uc?id=1Xe9mYiRpK_IKc07qnhR4HQ4XBP9-lTqP" alt="Profile Page" height="300"></td>
+    </tr>
+    <tr>
+        <td align="center"><b>Shop</b></td>
+    </tr>
+    <tr>
+        <td><img src="https://drive.google.com/uc?id=1bNoAn2FhjlY8IOUHs75sXi8NM-_w3IFk" alt="Shop Page" height="300"></td>
     </tr>
 </table>
