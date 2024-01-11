@@ -26,8 +26,16 @@ After installing the packages, and resolving the .env file, the application is b
 
 ## 🔎 Overview
 
-<img src="https://drive.google.com/uc?id=1Tg_7J6xgh-CzjtmR7xT_NxUU-E7CKqSC" alt="Home Page" height="350">
-<img src="https://drive.google.com/uc?id=1O5VhU3qijKFPAbUZ1_mIAjMXhZpC3R2x" alt="Trending Page" height="350">
-<img src="https://drive.google.com/uc?id=1tk7Uj1Svkrd53ydOvRUjliv8NqdqwONP" alt="Cart Page" height="350">
-<img src="https://drive.google.com/uc?id=1Xe9mYiRpK_IKc07qnhR4HQ4XBP9-lTqP" alt="Profile Page" height="350">
-<img src="https://drive.google.com/uc?id=1bNoAn2FhjlY8IOUHs75sXi8NM-_w3IFk" alt="Shop Page" height="350">
+<table>
+    <tr>
+        <td><img src="https://drive.google.com/uc?id=1Tg_7J6xgh-CzjtmR7xT_NxUU-E7CKqSC" alt="Home Page" height="250"></td>
+        <td><img src="https://drive.google.com/uc?id=1O5VhU3qijKFPAbUZ1_mIAjMXhZpC3R2x" alt="Trending Page" height="250"></td>
+    </tr>
+    <tr>
+        <td><img src="https://drive.google.com/uc?id=1tk7Uj1Svkrd53ydOvRUjliv8NqdqwONP" alt="Cart Page" height="250"></td>
+        <td><img src="https://drive.google.com/uc?id=1Xe9mYiRpK_IKc07qnhR4HQ4XBP9-lTqP" alt="Profile Page" height="250"></td>
+    </tr>
+    <tr>
+        <td><img src="https://drive.google.com/uc?id=1bNoAn2FhjlY8IOUHs75sXi8NM-_w3IFk" alt="Shop Page" height="250"></td>
+    </tr>
+</table>
