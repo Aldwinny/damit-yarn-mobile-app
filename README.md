@@ -1,6 +1,6 @@
 # <img src="https://drive.google.com/uc?id=1HioQItuqx9IEasGNdwUvbAKpHDskZ7yp" height="25" /> Damit Yarn! Mobile App
 
-> An ecommerce application where users can buy or sell clothes and accessories.
+> An ecommerce mobile application where users can buy or sell clothes and accessories.
 
 ## ✏️ Author
 
@@ -23,3 +23,11 @@ The express js backend implementation can be found [here!](https://github.com/al
 ## 🔨 Building
 
 After installing the packages, and resolving the .env file, the application is built by calling on <code>npm run build</code> which uses eas-cli to create an Android build of the application.
+
+## 🔎 Overview
+
+<img src="https://drive.google.com/uc?id=1Tg_7J6xgh-CzjtmR7xT_NxUU-E7CKqSC" alt="Home Page" height="350">
+<img src="https://drive.google.com/uc?id=1O5VhU3qijKFPAbUZ1_mIAjMXhZpC3R2x" alt="Trending Page" height="350">
+<img src="https://drive.google.com/uc?id=1tk7Uj1Svkrd53ydOvRUjliv8NqdqwONP" alt="Cart Page" height="350">
+<img src="https://drive.google.com/uc?id=1Xe9mYiRpK_IKc07qnhR4HQ4XBP9-lTqP" alt="Profile Page" height="350">
+<img src="https://drive.google.com/uc?id=1bNoAn2FhjlY8IOUHs75sXi8NM-_w3IFk" alt="Shop Page" height="350">
